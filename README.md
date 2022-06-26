@@ -9,3 +9,6 @@
      - storejs
      - react-slick
      - styled-components
+ - 2022.06.26. 
+    - typescript 설치
+    - styleLint 설정      
