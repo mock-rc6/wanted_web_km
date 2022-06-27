@@ -13,7 +13,7 @@ export const ModalBackground = styled.div`
   z-index: 9999;
 `
 
-export const ModalWrapper = styled.div`
+export const ModalWrapper = styled.div<{ isErr: string | null }>`
   display: flex;
   flex-direction: column;
   width: 400px;
@@ -87,6 +87,14 @@ export const ModalWrapper = styled.div`
       }
       form {
         width: 100%;
+        position: relative;
+        .err {
+          position: absolute;
+          top: 57px;
+          left: 0;
+          font-size: 12px;
+          color: #fe415c;
+        }
         svg {
           margin-right: 10px;
         }
@@ -95,9 +103,9 @@ export const ModalWrapper = styled.div`
           height: 50px;
           padding-right: 15px;
           padding-left: 15px;
-          margin-bottom: 15px;
+          margin-bottom: ${({ isErr }) => (isErr ? '30px' : '15px')};
           border-radius: 5px;
-          border: 1px solid #e1e2e3;
+          border: 1px solid ${({ isErr }) => (isErr ? '#fe415c' : '#e1e2e3')};
           background-color: #fff;
           font-size: 15px;
           color: #333;
@@ -108,6 +116,7 @@ export const ModalWrapper = styled.div`
             color: #aaaaaa;
           }
         }
+
         button {
           display: flex;
           justify-content: center;

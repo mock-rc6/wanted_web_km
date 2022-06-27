@@ -5,6 +5,7 @@ import { BetaIcon, NewIcon, SearchIcon } from 'assets'
 import { useState } from 'react'
 import Modal from 'components/common/modal'
 import Login from 'components/pages/logIn'
+import { Link } from 'react-router-dom'
 
 const GNB = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -25,7 +26,9 @@ const GNB = () => {
           <img className='logoimg' src={logo} alt='wanted' />
         </div>
         <ul className='menu'>
-          <li>채용</li>
+          <li>
+            <Link to='/joblist'>채용</Link>
+          </li>
           <li>이벤트</li>
           <li>직군별 연봉</li>
           <li>이력서</li>

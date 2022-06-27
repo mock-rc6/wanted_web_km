@@ -1,21 +1,34 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import JobCard from './jobCard'
 
 const JobList = () => {
   return (
     <JobListWrapper>
-      <JobCard />
-      <JobCard />
-      <JobCard />
-      <JobCard />
-      <JobCard />
-      <JobCard />
-      <JobCard />
-      <JobCard />
-      <JobCard />
-      <JobCard />
-      <JobCard />
-      <JobCard />
+      <Link to='/joblist/1'>
+        <JobCard />
+      </Link>
+      <Link to='/joblist/2'>
+        <JobCard />
+      </Link>
+      <Link to='/joblist/3'>
+        <JobCard />
+      </Link>
+      <Link to='/joblist/4'>
+        <JobCard />
+      </Link>
+      <Link to='/joblist/5'>
+        <JobCard />
+      </Link>
+      <Link to='/joblist/6'>
+        <JobCard />
+      </Link>
+      <Link to='/joblist/7'>
+        <JobCard />
+      </Link>
+      <Link to='/joblist/8'>
+        <JobCard />
+      </Link>
     </JobListWrapper>
   )
 }
