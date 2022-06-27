@@ -4,7 +4,7 @@ export const HeaderWrapper = styled.header`
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 60px;
+  height: 50px;
   border-bottom: 1px solid #e5e5e5;
   user-select: none;
   color: #333333;
@@ -14,7 +14,7 @@ export const HeaderWrapper = styled.header`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 1060px;
+    min-width: 1100px;
     margin: 0 auto;
     padding: 15px 20px;
 
@@ -28,7 +28,8 @@ export const HeaderWrapper = styled.header`
         margin-right: 15px;
       }
       .logoimg {
-        width: 75px;
+        width: 85px;
+        margin-right: -40px;
       }
     }
 
@@ -37,9 +38,9 @@ export const HeaderWrapper = styled.header`
       li {
         position: relative;
         vertical-align: middle;
-        height: 60px;
+        height: 50px;
         font-size: 14px;
-        line-height: 30px;
+        line-height: 20px;
         font-weight: 600;
         padding: 15px;
         border-bottom: 2px solid transparent;
@@ -49,7 +50,7 @@ export const HeaderWrapper = styled.header`
         }
         svg {
           position: absolute;
-          top: 20px;
+          top: 12px;
           right: -5px;
         }
       }
@@ -65,13 +66,13 @@ export const HeaderWrapper = styled.header`
         svg {
           width: 18px;
           height: 18px;
-          margin-right: 10px;
+          margin-right: 20px;
         }
         li {
           display: flex;
           padding: 15px 0;
           .divider {
-            margin-left: 15px;
+            margin-left: 25px;
             text-align: right;
             line-height: 30px;
             color: #e1e2e3;
@@ -87,7 +88,7 @@ export const HeaderWrapper = styled.header`
             border: 1px solid #e1e2e3;
             border-radius: 15px;
             padding: 0 10px;
-            margin-left: 15px;
+            margin-left: 25px;
             font-weight: 400;
           }
         }
