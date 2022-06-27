@@ -2,10 +2,23 @@ import { HeaderWrapper } from './gnb.styles'
 import hamburger from 'assets/img/hamburger.webp'
 import logo from 'assets/img/logo.png'
 import { BetaIcon, NewIcon, SearchIcon } from 'assets'
+import { useState } from 'react'
+import Modal from 'components/common/modal'
+import Login from 'components/pages/logIn'
 
 const GNB = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const handleModal = () => {
+    setIsModalOpen((prev) => !prev)
+  }
+
   return (
     <HeaderWrapper>
+      {isModalOpen && (
+        <Modal>
+          <Login handleModal={handleModal} />
+        </Modal>
+      )}
       <nav>
         <div className='logo'>
           <img className='hamburger' src={hamburger} alt='hamburgerMenu' />
@@ -28,10 +41,16 @@ const GNB = () => {
         <aside>
           <ul>
             <SearchIcon />
-            <li>회원가입/로그인</li>
+            <li>
+              <button type='button' onClick={handleModal}>
+                회원가입/로그인
+              </button>
+            </li>
             <li>
               <div className='divider'>|</div>
-              <button type='button'>기업서비스</button>
+              <button type='button' className='dashboardButton'>
+                기업서비스
+              </button>
             </li>
           </ul>
         </aside>

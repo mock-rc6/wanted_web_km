@@ -75,6 +75,10 @@ export const HeaderWrapper = styled.header`
         li {
           display: flex;
           padding: 15px 0;
+          button {
+            font-size: 14px;
+            font-weight: 600;
+          }
           .divider {
             margin-left: 25px;
             text-align: right;
@@ -84,7 +88,7 @@ export const HeaderWrapper = styled.header`
             font-weight: 400;
             user-select: none;
           }
-          button {
+          .dashboardButton {
             font-size: 13px;
             color: #666;
             line-height: 30px;
