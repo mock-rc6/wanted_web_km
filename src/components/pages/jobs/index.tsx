@@ -1,3 +1,4 @@
+import Footer from 'components/common/layout/footer'
 import JobFilter from './list/jobFilter'
 
 const Jobs = () => {
@@ -81,6 +82,7 @@ const Jobs = () => {
       <br /> ...
       <br /> ...
       <br />
+      <Footer />
     </>
   )
 }
