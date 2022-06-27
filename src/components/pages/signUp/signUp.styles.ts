@@ -13,17 +13,16 @@ export const ModalBackground = styled.div`
   z-index: 9999;
 `
 
-export const ModalWrapper = styled.div<{ isErr?: string | null }>`
+export const ModalWrapper = styled.div<{ phone?: string | null }>`
   display: flex;
   flex-direction: column;
   width: 400px;
   height: 635px;
-  overflow: hidden;
+  overflow: scroll;
   background-color: #fff;
   border-radius: 5px;
   padding: 5px 20px;
   margin: 0 auto;
-  -ms-overflow-style: none;
 
   .modalHeader {
     height: 54px;
@@ -34,7 +33,7 @@ export const ModalWrapper = styled.div<{ isErr?: string | null }>`
     font-size: 16px;
     font-weight: 600;
     word-wrap: break-word;
-    .logo {
+    .title {
       position: absolute;
       top: 20px;
       left: 50%;
@@ -51,6 +50,7 @@ export const ModalWrapper = styled.div<{ isErr?: string | null }>`
   }
 
   .content {
+    margin-top: 50px;
     padding: 20px 0;
     text-align: center;
 
@@ -82,19 +82,19 @@ export const ModalWrapper = styled.div<{ isErr?: string | null }>`
         font-weight: 400;
         color: #767676;
         margin-bottom: 15px;
+        ~ span {
+          margin-top: 22px;
+        }
       }
       .signUpInput {
       }
       form {
         width: 100%;
         position: relative;
-        .err {
-          position: absolute;
-          top: 57px;
-          left: 0;
-          font-size: 12px;
-          color: #fe415c;
-        }
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
         svg {
           margin-right: 10px;
         }
@@ -103,9 +103,9 @@ export const ModalWrapper = styled.div<{ isErr?: string | null }>`
           height: 50px;
           padding-right: 15px;
           padding-left: 15px;
-          margin-bottom: ${({ isErr }) => (isErr ? '30px' : '15px')};
+          margin-bottom: 10px;
           border-radius: 5px;
-          border: 1px solid ${({ isErr }) => (isErr ? '#fe415c' : '#e1e2e3')};
+          border: 1px solid #e1e2e3;
           background-color: #fff;
           font-size: 15px;
           color: #333;
@@ -117,6 +117,22 @@ export const ModalWrapper = styled.div<{ isErr?: string | null }>`
           }
         }
 
+        .row {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+        }
+        .getPhoneTokenBtn {
+          width: 117px;
+          margin-left: 10px;
+          border-radius: 5px;
+          background-color: ${({ phone }) => (phone ? '#fff' : '#f2f4f7')};
+          font-weight: 700;
+          color: ${({ phone }) => (phone ? '#36F' : '#ccc')};
+          border: 1px solid ${({ phone }) => (phone ? '#36F' : 'none')};
+          font-size: 14px;
+        }
+
         button {
           display: flex;
           justify-content: center;
@@ -125,22 +141,11 @@ export const ModalWrapper = styled.div<{ isErr?: string | null }>`
           height: 54px;
           border: 0;
           border-radius: 27px;
-          background-color: #36f;
+          background-color: ${({ phone }) => (phone ? '#fff' : '#f2f4f7')};
           font-size: 16px;
           font-weight: 600;
-          color: #fff;
+          color: #ccc;
           cursor: pointer;
-        }
-        ::after {
-          display: block;
-          content: 'or';
-          color: #969696;
-          font-size: 14px;
-          font-weight: 500;
-          line-height: 1;
-          text-align: center;
-          margin: 13px auto;
-          white-space: pre;
         }
       }
       .socialLogin {
@@ -158,6 +163,24 @@ export const ModalWrapper = styled.div<{ isErr?: string | null }>`
         width: 100%;
         display: flex;
         justify-content: space-between;
+      }
+      .all {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: #333;
+        font-size: 15px;
+        margin-top: 30px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid #ececec;
+        margin-bottom: 15px;
+      }
+      .checkbox {
+        width: 13px;
+        height: 13px;
+        margin-bottom: 5px;
+        margin-right: 10px;
       }
     }
   }
