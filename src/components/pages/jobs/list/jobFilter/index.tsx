@@ -19,7 +19,7 @@ const JobFilter = () => {
     { text: '재택근무 🏠', color: '#f2f9fe' },
   ]
 
-  window.addEventListener('scroll', function () {
+  window.addEventListener('scroll', () => {
     if (window.scrollY > 250) {
       setIsScrolled(true)
     } else {

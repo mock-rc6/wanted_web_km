@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const JobFilterWrapper = styled.div<{ isScrolled: boolean }>`
+export const JobFilterWrapper = styled.nav<{ isScrolled: boolean }>`
   width: 100%;
   padding-top: ${({ isScrolled }) => (isScrolled ? '0' : '40px')};
   background-color: #fff;
@@ -8,6 +8,7 @@ export const JobFilterWrapper = styled.div<{ isScrolled: boolean }>`
   position: ${({ isScrolled }) => (isScrolled ? 'fixed' : 'static')};
   margin-top: 50px;
   top: 0px;
+  z-index: 999;
   .wrapper {
     width: 1060px;
     margin: 0 auto;
