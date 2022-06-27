@@ -4,10 +4,9 @@ import styled from 'styled-components'
 interface IProps {
   service: string
   color: string
-  border?: boolean
 }
 
-const SocialButton = ({ service, color, border }: IProps) => {
+const SocialButton = ({ service, color }: IProps) => {
   return (
     <Button type='button'>
       <SocialIcon color={color}>

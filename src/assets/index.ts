@@ -10,3 +10,5 @@ export { ReactComponent as KakaoIcon } from './svg/kakao.svg'
 export { ReactComponent as FacebookIcon } from './svg/facebook.svg'
 export { ReactComponent as GoogleIcon } from './svg/google.svg'
 export { ReactComponent as AppleIcon } from './svg/apple.svg'
+
+export { ReactComponent as BookmarkIcon } from './svg/bookmark.svg'
