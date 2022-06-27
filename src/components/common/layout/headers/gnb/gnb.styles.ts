@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
 export const HeaderWrapper = styled.header`
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  z-index: 9999;
   display: flex;
   flex-direction: row;
   width: 100%;

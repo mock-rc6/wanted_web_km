@@ -1,7 +1,7 @@
 import { HeaderWrapper } from './gnb.styles'
 import hamburger from 'assets/img/hamburger.webp'
 import logo from 'assets/img/logo.png'
-import { BetaIcon, NewIcon, SearchIcon } from 'assets/svg'
+import { BetaIcon, NewIcon, SearchIcon } from 'assets'
 
 const GNB = () => {
   return (

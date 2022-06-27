@@ -1,0 +1,5 @@
+export { ReactComponent as SearchIcon } from './svg/search.svg'
+export { ReactComponent as NewIcon } from './svg/new.svg'
+export { ReactComponent as BetaIcon } from './svg/beta.svg'
+export { ReactComponent as LinedArrow } from './svg/linedArrow.svg'
+export { ReactComponent as FilledArrow } from './svg/filledArrow.svg'
