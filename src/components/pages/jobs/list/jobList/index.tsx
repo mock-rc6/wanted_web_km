@@ -1,10 +1,30 @@
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import JobCard from './jobCard'
 
+export interface IRecruits {
+  id: number
+  title: string
+  company_name: string
+}
+
 const JobList = () => {
+  const [jobData, setJobData] = useState<IRecruits[]>([])
+
+  useEffect(() => {
+    axios.get('https://dev.odoong.shop/recruits').then((res) => {
+      const data = res.data.result.recruits
+      setJobData(data)
+    })
+  }, [])
+
   return (
     <JobListWrapper>
+      {jobData.map((job) => (
+        <JobCard key={job.id} job={job} />
+      ))}
       <Link to='/joblist/1'>
         <JobCard />
       </Link>

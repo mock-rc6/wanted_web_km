@@ -1,4 +1,3 @@
-import { BookmarkLineIcon, HeartIcon } from 'assets'
 import Footer from 'components/common/layout/footer'
 import JobList from '../list/jobList'
 import { Apply } from './apply'

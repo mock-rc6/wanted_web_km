@@ -2,7 +2,16 @@ import { BookmarkIcon } from 'assets'
 import ResRateLabel from 'components/common/labels/responseRate'
 import styled from 'styled-components'
 
-const JobCard = () => {
+interface IJob {
+  job?: {
+    id: number
+    title: string
+    company_name: string
+  }
+}
+
+const JobCard = ({ job }: IJob) => {
+  console.log(job)
   return (
     <CardWrapper>
       <div className='imgWrapper'>
@@ -12,8 +21,8 @@ const JobCard = () => {
         </button>
       </div>
       <div className='cardContents'>
-        <h3 className='jobTitle'>[삼쩜삼]프론트엔드 엔지니어</h3>
-        <p className='companyName'>자비스앤빌런즈(삼쩜삼)</p>
+        <h3 className='jobTitle'>{job ? job.title : '[삼쩜삼]프론트엔드 엔지니어'}</h3>
+        <p className='companyName'>{job ? job.company_name : '자비스앤빌런즈(삼쩜삼)'}</p>
         <ResRateLabel />
         <p className='companyLocation'>서울 ∙ 한국</p>
         <p className='reward'>채용보상금 1,000,000원</p>
