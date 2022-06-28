@@ -38,14 +38,14 @@ const Contents = () => {
           <br />
         </article>
         <div className='workPlace'>
-          <div>
+          <dl>
             <dt>마감일</dt>
             <dd>상시</dd>
-          </div>
-          <div>
+          </dl>
+          <dl>
             <dt>근무지역</dt>
             <dd>서울특별시 강남구 테헤란로 332 HJ타워, 10층</dd>
-          </div>
+          </dl>
         </div>
         <div className='companyCard'>
           <div className='cardLeft'>

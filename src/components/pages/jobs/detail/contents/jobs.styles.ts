@@ -78,7 +78,7 @@ export const JobContents = styled.section`
     width: 700px;
     border-top: 1px solid #eee;
     margin: 20px 0;
-    div {
+    dl {
       display: flex;
       margin-top: 20px;
       dt {

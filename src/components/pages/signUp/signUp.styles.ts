@@ -13,15 +13,15 @@ export const ModalBackground = styled.div`
   z-index: 9999;
 `
 
-export const ModalWrapper = styled.div<{ phone?: string | null }>`
+export const ModalWrapper = styled.div<{ phone?: boolean }>`
   display: flex;
   flex-direction: column;
   width: 400px;
   height: 635px;
-  overflow: scroll;
+  overflow-y: scroll;
   background-color: #fff;
   border-radius: 5px;
-  padding: 5px 20px;
+  padding: 0 20px;
   margin: 0 auto;
 
   .modalHeader {
@@ -51,7 +51,7 @@ export const ModalWrapper = styled.div<{ phone?: string | null }>`
 
   .content {
     margin-top: 50px;
-    padding: 20px 0;
+    padding: 20px 0 0;
     text-align: center;
 
     .contentHeader {
@@ -122,8 +122,13 @@ export const ModalWrapper = styled.div<{ phone?: string | null }>`
           justify-content: space-between;
           width: 100%;
         }
+
+        .rowRight {
+          width: 218px;
+        }
         .getPhoneTokenBtn {
           width: 117px;
+          height: 50px;
           margin-left: 10px;
           border-radius: 5px;
           background-color: ${({ phone }) => (phone ? '#fff' : '#f2f4f7')};
@@ -133,37 +138,37 @@ export const ModalWrapper = styled.div<{ phone?: string | null }>`
           font-size: 14px;
         }
 
-        button {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-          height: 54px;
-          border: 0;
-          border-radius: 27px;
+        .phoneToken {
           background-color: ${({ phone }) => (phone ? '#fff' : '#f2f4f7')};
-          font-size: 16px;
-          font-weight: 600;
-          color: #ccc;
-          cursor: pointer;
+          cursor: ${({ phone }) => (phone ? 'text' : 'unset')};
+          :focus {
+            border: 1px solid ${({ phone }) => (phone ? '#36F' : '#e1e2e3')};
+          }
         }
       }
-      .socialLogin {
+
+      .phoneTokenWrapper {
+        position: relative;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        button {
+          position: absolute;
+          top: 20%;
+          right: 15px;
+          padding: 6px 20px 4px;
+          border-radius: 5px;
+          border: 1px solid #e1e2e3;
+          font-weight: 700;
+          color: #aaa;
+        }
+      }
+      .guidance {
+        bottom: 0;
+        margin-top: 6px;
+        font-size: 12px;
         color: #767676;
-        margin-bottom: 17px;
-        font-size: 14px;
+        text-align: left;
       }
-      .socialServices {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
+
       .all {
         width: 100%;
         display: flex;
@@ -181,6 +186,28 @@ export const ModalWrapper = styled.div<{ phone?: string | null }>`
         height: 13px;
         margin-bottom: 5px;
         margin-right: 10px;
+      }
+
+      .signUpButton {
+        width: 100%;
+        height: 70px;
+        position: sticky;
+        bottom: 0px;
+        background-color: #fff;
+
+        button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 54px;
+          border-radius: 24px;
+          background-color: #f2f4f7;
+          font-size: 16px;
+          font-weight: 600;
+          color: #ccc;
+          cursor: pointer;
+        }
       }
     }
   }

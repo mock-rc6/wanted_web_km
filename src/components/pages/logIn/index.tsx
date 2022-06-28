@@ -40,7 +40,7 @@ const Login = ({ handleModal }: IProps) => {
     <ModalBackground>
       <div ref={ref}>
         {signUp ? (
-          <SignUp handleModal={handleModal} />
+          <SignUp handleModal={handleModal} email={email} />
         ) : (
           <ModalWrapper isErr={emailErrMsg}>
             <div className='modalHeader'>
