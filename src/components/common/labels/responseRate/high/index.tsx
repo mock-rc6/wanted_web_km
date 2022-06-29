@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-const ResRateLabel = () => {
+const ResRateHighLabel = () => {
   return <LabelWrapper>응답률 매우 높음</LabelWrapper>
 }
 
-export default ResRateLabel
+export default ResRateHighLabel
 
 const LabelWrapper = styled.span`
   border: 1px solid #00aead;

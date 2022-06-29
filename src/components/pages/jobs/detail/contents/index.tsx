@@ -1,7 +1,14 @@
 import Images from './images'
-import { JobContents } from './jobs.styles'
+import ResRateMediumLabel from 'components/common/labels/responseRate/medium'
+import CompanyCard from './companyCard'
+
+import { JobContents } from './contents.styles'
+import WarningCard from './warningCard'
 
 const Contents = () => {
+  const map =
+    'https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?w=700&h=254&markers=type:d|size:mid|color:red|pos:127.0480901%2037.5038089&format=png&scale=2&X-NCP-APIGW-API-KEY-ID=6j3nqcgb0s'
+
   return (
     <div>
       <Images />
@@ -9,7 +16,7 @@ const Contents = () => {
         <h2>[삼쩜삼] 프론트엔드 엔지니어</h2>
         <div className='company'>
           <span className='companyName'>자비스앤빌런즈(삼쩜삼)</span>
-          <span className='resLabel'>응답률 평균 이상</span>
+          <ResRateMediumLabel />
           <span className='location'>
             <span className='divider'>|</span>
             서울 ∙ 한국
@@ -46,21 +53,10 @@ const Contents = () => {
             <dt>근무지역</dt>
             <dd>서울특별시 강남구 테헤란로 332 HJ타워, 10층</dd>
           </dl>
+          <img src={map} alt='map' />
         </div>
-        <div className='companyCard'>
-          <div className='cardLeft'>
-            <div className='logo' />
-            <div className='companyInfo'>
-              <h5>자비스앤빌런즈(삼쩜삼)</h5>
-              <h6>IT,컨텐츠</h6>
-            </div>
-          </div>
-          <div className='cardRight'>
-            <button type='button' className='followBtn'>
-              팔로우
-            </button>
-          </div>
-        </div>
+        <CompanyCard />
+        <WarningCard />
       </JobContents>
     </div>
   )

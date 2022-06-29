@@ -55,12 +55,6 @@ const JobList = () => {
       <Link to='/joblist/2'>
         <JobCard />
       </Link>
-      <Link to='/joblist/3'>
-        <JobCard />
-      </Link>
-      <Link to='/joblist/4'>
-        <JobCard />
-      </Link>
     </JobListWrapper>
   )
 }
@@ -68,10 +62,10 @@ const JobList = () => {
 export default JobList
 
 const JobListWrapper = styled.main`
-  width: 1200px;
+  width: 1080px;
   margin: 0 auto;
   padding: 20px 0 80px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 `

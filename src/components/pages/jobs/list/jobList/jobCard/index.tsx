@@ -1,5 +1,5 @@
 import { BookmarkIcon } from 'assets'
-import ResRateLabel from 'components/common/labels/responseRate'
+import ResRateHighLabel from 'components/common/labels/responseRate/high'
 import styled from 'styled-components'
 
 interface IJob {
@@ -23,7 +23,7 @@ const JobCard = ({ job }: IJob) => {
       <div className='cardContents'>
         <h3 className='jobTitle'>{job ? job.title : '[삼쩜삼]프론트엔드 엔지니어'}</h3>
         <p className='companyName'>{job ? job.company_name : '자비스앤빌런즈(삼쩜삼)'}</p>
-        <ResRateLabel />
+        <ResRateHighLabel />
         <p className='companyLocation'>서울 ∙ 한국</p>
         <p className='reward'>채용보상금 1,000,000원</p>
       </div>

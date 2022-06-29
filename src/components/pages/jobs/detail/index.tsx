@@ -5,15 +5,18 @@ import Contents from './contents'
 import { JobDetailWrapper } from './detail.styles'
 
 const JobDetail = () => {
+  const user = '민경미'
+
   return (
-    <>
-      <JobDetailWrapper>
+    <JobDetailWrapper>
+      <section className='jobDetail'>
         <Contents />
         <Apply />
-      </JobDetailWrapper>
+      </section>
+      <h5>{user}님, 이 포지션을 찾고 계셨나요?</h5>
       <JobList />
       <Footer />
-    </>
+    </JobDetailWrapper>
   )
 }
 

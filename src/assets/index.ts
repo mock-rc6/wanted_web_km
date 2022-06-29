@@ -15,3 +15,5 @@ export { ReactComponent as BookmarkIcon } from './svg/bookmark.svg'
 export { ReactComponent as BookmarkLineIcon } from './svg/bookmarkBlue.svg'
 
 export { ReactComponent as HeartIcon } from './svg/heart.svg'
+
+export { ReactComponent as InfoIcon } from './svg/infoIcon.svg'
