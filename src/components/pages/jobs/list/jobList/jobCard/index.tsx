@@ -1,21 +1,21 @@
 import { BookmarkIcon } from 'assets'
+import ResponseRateLabel from 'components/common/labels/responseRate'
 import ResRateHighLabel from 'components/common/labels/responseRate/high'
 import styled from 'styled-components'
+import { IRecruits } from 'types/wanted'
 
-interface IJob {
-  job?: {
-    id: number
-    title: string
-    company_name: string
-  }
+interface IProps {
+  job?: IRecruits
 }
 
-const JobCard = ({ job }: IJob) => {
-  console.log(job)
+const JobCard = ({ job }: IProps) => {
   return (
     <CardWrapper>
       <div className='imgWrapper'>
-        <img src='https://image.wanted.co.kr/optimize?src=https://static.wanted.co.kr/images/company/403/wmcdajeixelbaztn__400_400.jpg&w=400&q=undefined' />
+        <img
+          src='https://image.wanted.co.kr/optimize?src=https://static.wanted.co.kr/images/company/403/wmcdajeixelbaztn__400_400.jpg&w=400&q=undefined'
+          alt='자비스앤빌런즈'
+        />
         <button type='button' className='bookmarkBtn'>
           <BookmarkIcon />
         </button>
@@ -23,7 +23,7 @@ const JobCard = ({ job }: IJob) => {
       <div className='cardContents'>
         <h3 className='jobTitle'>{job ? job.title : '[삼쩜삼]프론트엔드 엔지니어'}</h3>
         <p className='companyName'>{job ? job.company_name : '자비스앤빌런즈(삼쩜삼)'}</p>
-        <ResRateHighLabel />
+        {job ? <ResponseRateLabel rate={job.response_rate} /> : <ResRateHighLabel />}
         <p className='companyLocation'>서울 ∙ 한국</p>
         <p className='reward'>채용보상금 1,000,000원</p>
       </div>

@@ -81,23 +81,20 @@ const SignUp = ({ email, handleModal }: IProps) => {
       return
     }
     if (!isCodeValid) return
-    axios
-      .post(
-        'https://dev.odoong.shop/users',
-        {
-          user_name: name,
-          email,
-          password,
-          phone_number: phone,
+    axios.post(
+      'https://dev.odoong.shop/users',
+      {
+        user_name: name,
+        email,
+        password,
+        phone_number: phone,
+      },
+      {
+        headers: {
+          'X-ACCESS-TOKEN': accessToken,
         },
-        {
-          headers: {
-            'X-ACCESS-TOKEN': accessToken,
-          },
-        }
-      )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err))
+      }
+    )
   }
 
   return (

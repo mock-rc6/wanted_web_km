@@ -1,10 +1,14 @@
+import { ChangeEvent, FormEvent, useRef, useState } from 'react'
+
+import useOnClickOutside from 'hooks/useOnClickOutside'
+import SocialButton from 'components/common/buttons/socialButton'
+
+import SignUp from '../signUp'
+
 import logo from 'assets/img/logo.png'
 import { MailIcon, XButton } from 'assets'
-import SocialButton from 'components/common/buttons/socialButton'
+
 import { ModalBackground, ModalWrapper } from './login.styles'
-import { ChangeEvent, FormEvent, useRef, useState } from 'react'
-import useOnClickOutside from 'hooks/useOnClickOutside'
-import SignUp from '../signUp'
 
 interface IProps {
   handleModal: () => void

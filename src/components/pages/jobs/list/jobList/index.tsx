@@ -1,14 +1,9 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
 import JobCard from './jobCard'
-
-export interface IRecruits {
-  id: number
-  title: string
-  company_name: string
-}
+import { IRecruits } from 'types/wanted'
+import styled from 'styled-components'
 
 const JobList = () => {
   const [jobData, setJobData] = useState<IRecruits[]>([])
@@ -22,37 +17,39 @@ const JobList = () => {
 
   return (
     <JobListWrapper>
-      {jobData.map((job) => (
-        <JobCard key={job.id} job={job} />
+      {jobData?.map((job) => (
+        <Link to={`/joblist/${job.id}`} key={job.id}>
+          <JobCard job={job} />
+        </Link>
       ))}
-      <Link to='/joblist/1'>
+      <Link to='/joblist/a'>
         <JobCard />
       </Link>
-      <Link to='/joblist/2'>
+      <Link to='/joblist/b'>
         <JobCard />
       </Link>
-      <Link to='/joblist/3'>
+      <Link to='/joblist/c'>
         <JobCard />
       </Link>
-      <Link to='/joblist/4'>
+      <Link to='/joblist/d'>
         <JobCard />
       </Link>
-      <Link to='/joblist/5'>
+      <Link to='/joblist/e'>
         <JobCard />
       </Link>
-      <Link to='/joblist/6'>
+      <Link to='/joblist/f'>
         <JobCard />
       </Link>
-      <Link to='/joblist/7'>
+      <Link to='/joblist/g'>
         <JobCard />
       </Link>
-      <Link to='/joblist/8'>
+      <Link to='/joblist/h'>
         <JobCard />
       </Link>
-      <Link to='/joblist/1'>
+      <Link to='/joblist/i'>
         <JobCard />
       </Link>
-      <Link to='/joblist/2'>
+      <Link to='/joblist/j'>
         <JobCard />
       </Link>
     </JobListWrapper>

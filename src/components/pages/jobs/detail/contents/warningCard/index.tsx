@@ -13,7 +13,7 @@ const WarningCard = () => {
       <div className='warningHeader'>
         <InfoIcon />
         <div className='warningTitle'>
-          <h5>
+          <h5 className='warningTitleMsg'>
             본 채용정보는 원티드랩의 동의없이 무단전재, 재배포, 재가공할 수 없으며, 구직활동 이외의 <br />
             용도로 사용할 수 없습니다.
           </h5>
@@ -61,7 +61,7 @@ const Warning = styled.div`
       justify-content: space-between;
       align-items: center;
 
-      h5 {
+      .warningTitleMsg {
         margin: 0 20px;
         font-size: 12px;
         font-weight: 700;

@@ -7,7 +7,7 @@ const CompanyCard = () => {
         <div className='cardLeft'>
           <div className='logo' />
           <div className='companyInfo'>
-            <h5>자비스앤빌런즈(삼쩜삼)</h5>
+            <h5 className='companyName'>자비스앤빌런즈(삼쩜삼)</h5>
             <h6>IT,컨텐츠</h6>
           </div>
         </div>
@@ -53,13 +53,13 @@ const CardWrapper = styled.div`
       flex-direction: column;
       justify-content: center;
 
-      h5 {
+      .companyName {
         color: #333;
         font-size: 15px;
         font-weight: 600;
         margin: 0 0 5px;
+        padding: 0;
         word-break: break-word;
-        display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
