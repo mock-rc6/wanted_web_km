@@ -5,7 +5,7 @@ import CompanyCard from './companyCard'
 import { JobContents } from './contents.styles'
 import WarningCard from './warningCard'
 
-const Contents = () => {
+const Contents = ({ scrollRef }: any) => {
   const map =
     'https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?w=700&h=254&markers=type:d|size:mid|color:red|pos:127.0480901%2037.5038089&format=png&scale=2&X-NCP-APIGW-API-KEY-ID=6j3nqcgb0s'
 
@@ -44,7 +44,7 @@ const Contents = () => {
           오늘도 로켓 성장 중인 삼쩜삼 팀에 합류하세요!
           <br />
         </article>
-        <div className='workPlace'>
+        <div className='workPlace' ref={scrollRef}>
           <dl>
             <dt>마감일</dt>
             <dd>상시</dd>

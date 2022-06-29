@@ -1,7 +1,19 @@
 import styled from 'styled-components'
 import { BookmarkLineIcon, HeartIcon } from 'assets'
+import { useState } from 'react'
 
-export const Apply = () => {
+export const Apply = ({ scrollRef }: any) => {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > scrollRef.current.offsetTop) {
+      setIsScrolled(true)
+    } else {
+      setIsScrolled(false)
+    }
+  })
+  console.log(isScrolled)
+
   return (
     <ApplyBox>
       <h3>채용보상금</h3>
@@ -45,6 +57,7 @@ const ApplyBox = styled.section`
   border-radius: 3px;
   position: sticky;
   top: 70px;
+  margin-bottom: 30px;
 
   h3 {
     font-size: 15px;
