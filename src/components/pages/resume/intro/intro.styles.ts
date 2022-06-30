@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const ResumeIntroWrapper = styled.div`
+  width: 100%;
   margin-top: 50px;
   background: #fff;
   .default {
@@ -52,6 +53,9 @@ export const ResumeIntroWrapper = styled.div`
       margin: 20px 0 0;
       line-height: 1.5;
     }
+    img {
+      width: 100%;
+    }
   }
 
   .resumeIntro2 {
@@ -92,7 +96,7 @@ export const ResumeIntroWrapper = styled.div`
       padding-bottom: 35px;
     }
     img {
-      width: 70%;
+      width: 100%;
     }
   }
 

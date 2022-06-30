@@ -4,6 +4,7 @@ import GlobalStyles from './style/globalStyles'
 import Jobs from 'components/pages/jobs'
 import JobDetail from 'components/pages/jobs/detail'
 import ResumeIntro from 'components/pages/resume/intro'
+import ResumeList from 'components/pages/resume/list'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='joblist' element={<Jobs />} />
           <Route path='joblist/:id' element={<JobDetail />} />
           <Route path='resume/intro' element={<ResumeIntro />} />
+          <Route path='resume/list' element={<ResumeList />} />
           <Route path='*' element={<div>404</div>} />
         </Route>
       </Routes>

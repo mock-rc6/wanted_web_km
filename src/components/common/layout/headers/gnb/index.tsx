@@ -31,7 +31,9 @@ const GNB = () => {
           </li>
           <li>이벤트</li>
           <li>직군별 연봉</li>
-          <li>이력서</li>
+          <li>
+            <Link to='/resume/intro'>이력서</Link>
+          </li>
           <li>
             커뮤니티 <NewIcon />
           </li>

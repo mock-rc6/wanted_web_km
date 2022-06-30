@@ -2,6 +2,7 @@ import { XButton } from 'assets'
 import axios from 'axios'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { ModalBackground, ModalWrapper } from './signUp.styles'
+import { passwordRegex, phoneRegex } from 'utils/regex'
 
 import Timer from './timer'
 
@@ -25,8 +26,6 @@ const SignUp = ({ email, handleModal }: IProps) => {
 
   const [accessToken, setAccessToken] = useState('')
 
-  const phoneRegex = /^\d{3}\d{3,4}\d{4}$/
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*d)(?=.*[$@$!%*#?&])[A-Za-zd$@$!%*#?&]{8,}$/
   const isPwValid = passwordRegex.test(password)
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -108,7 +107,7 @@ const SignUp = ({ email, handleModal }: IProps) => {
         </div>
         <div className='content'>
           <div className='contentBody'>
-            <form className='signUpInput'>
+            <form className='signUpInput' onSubmit={handleClickSubmit}>
               <span>이름</span>
               <input type='text' placeholder='이름을 입력해 주세요.' onChange={handleNameChange} />
               <span>휴대폰번호</span>
@@ -139,7 +138,12 @@ const SignUp = ({ email, handleModal }: IProps) => {
                 <Timer number={300} isStarted={isTokenSend} handler={setIsTokenSend} isCodeValid={isCodeValid} />
               )}
               <span>비밀번호</span>
-              <input type='password' placeholder='비밀번호를 입력해 주세요.' onChange={handlePasswordChange} />
+              <input
+                type='password'
+                placeholder='비밀번호를 입력해 주세요.'
+                onChange={handlePasswordChange}
+                autoComplete='off'
+              />
               <span className='guidance'>
                 영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합하여 8자 이상 입력해 주세요.
               </span>
@@ -148,14 +152,13 @@ const SignUp = ({ email, handleModal }: IProps) => {
                 type='password'
                 placeholder='비밀번호를 다시 한번 입력해 주세요.'
                 onChange={handlePasswordCheckChange}
+                autoComplete='off'
               />
               <label className='all'>
                 <input type='checkbox' className='checkbox' /> 전체 동의
               </label>
               <div className='signUpButton'>
-                <button type='submit' onClick={handleClickSubmit}>
-                  회원가입하기
-                </button>
+                <button type='submit'>회원가입하기</button>
               </div>
             </form>
           </div>

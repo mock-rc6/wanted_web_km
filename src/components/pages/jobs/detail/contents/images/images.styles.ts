@@ -17,7 +17,7 @@ export const ImagesWrapper = styled.section`
     svg {
       width: 18px;
       height: 18px;
-      fill: #b5b5b5;
+      fill: #b5b5b5 !important;
     }
   }
 
@@ -34,7 +34,7 @@ export const ImagesWrapper = styled.section`
     svg {
       width: 18px;
       height: 18px;
-      fill: #b5b5b5;
+      color: #b5b5b5;
     }
   }
 
