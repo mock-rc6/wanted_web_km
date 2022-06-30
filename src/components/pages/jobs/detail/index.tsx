@@ -27,7 +27,7 @@ const JobDetail = () => {
     <JobDetailWrapper>
       <section className='jobDetail'>
         <Contents scrollRef={scrollRef} data={detailData} />
-        <Apply scrollRef={scrollRef} />
+        <Apply scrollRef={scrollRef} data={detailData} />
       </section>
       <h5>{user}님, 이 포지션을 찾고 계셨나요?</h5>
       <JobList />

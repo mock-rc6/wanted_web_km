@@ -1,9 +1,23 @@
 import { useEffect, useState } from 'react'
 import { BookmarkLineIcon, HeartIcon } from 'assets'
 import { ApplyBox } from './apply.styles'
+import axios from 'axios'
+import DefaultBtn from 'components/common/buttons/default'
 
-export const Apply = ({ scrollRef }: any) => {
+interface IProps {
+  scrollRef: any
+  data: any
+}
+
+export const Apply = ({ scrollRef, data }: IProps) => {
   const [isScrolled, setIsScrolled] = useState(false)
+  // const handleClickBookmark = () => {
+  //   axios.post(`/recruits/${data.id}/bookmarks`, null, {
+  //     headers: {
+  //       'X-ACCESS-TOKEN': accessToken,
+  //     },
+  //   })
+  // }
 
   const scrollEvent = () => {
     if (window.scrollY > scrollRef.current.offsetTop) {
@@ -35,9 +49,7 @@ export const Apply = ({ scrollRef }: any) => {
         <BookmarkLineIcon />
         북마크하기
       </button>
-      <button type='button' className='applyBtn'>
-        지원하기
-      </button>
+      <DefaultBtn buttonName='지원하기' />
       <div className='applyBottom'>
         <button type='button' className='likeBtn'>
           <HeartIcon />

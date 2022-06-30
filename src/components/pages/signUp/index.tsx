@@ -107,7 +107,7 @@ const SignUp = ({ email, handleModal }: IProps) => {
         </div>
         <div className='content'>
           <div className='contentBody'>
-            <form className='signUpInput' onSubmit={handleClickSubmit}>
+            <form className='signUpInput'>
               <span>이름</span>
               <input type='text' placeholder='이름을 입력해 주세요.' onChange={handleNameChange} />
               <span>휴대폰번호</span>
@@ -158,7 +158,9 @@ const SignUp = ({ email, handleModal }: IProps) => {
                 <input type='checkbox' className='checkbox' /> 전체 동의
               </label>
               <div className='signUpButton'>
-                <button type='submit'>회원가입하기</button>
+                <button type='button' onClick={handleClickSubmit}>
+                  회원가입하기
+                </button>
               </div>
             </form>
           </div>
