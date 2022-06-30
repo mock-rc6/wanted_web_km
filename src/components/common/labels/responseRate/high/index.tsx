@@ -28,6 +28,7 @@ const Label = styled.span`
   line-height: 19px;
   margin-top: 4px;
   padding: 0 5px;
+  user-select: none;
 `
 const LabelWrapper = styled.div`
   position: relative;

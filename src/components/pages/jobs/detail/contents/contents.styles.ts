@@ -11,7 +11,10 @@ export const JobContents = styled.section`
     word-wrap: break-word;
   }
   .company {
+    display: flex;
+    align-items: center;
     .companyName {
+      margin-top: 4px;
       color: #333;
       position: relative;
       width: 100%;
@@ -25,6 +28,7 @@ export const JobContents = styled.section`
       margin-right: 10px;
     }
     .location {
+      margin-top: 4px;
       font-size: 14px;
       padding: 0 10px;
       position: relative;
