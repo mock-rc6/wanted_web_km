@@ -1,7 +1,10 @@
-import { BookmarkIcon } from 'assets'
+import axios from 'axios'
+import store from 'storejs'
+import styled from 'styled-components'
+
 import ResponseRateLabel from 'components/common/labels/responseRate'
 import ResRateHighLabel from 'components/common/labels/responseRate/high'
-import styled from 'styled-components'
+import { BookmarkIcon } from 'assets'
 import { IRecruits } from 'types/wanted'
 
 interface IProps {
@@ -9,6 +12,19 @@ interface IProps {
 }
 
 const JobCard = ({ job }: IProps) => {
+  const accessToken = store.get('accessToken')
+  const handleClickBookmark = () => {
+    axios.post(
+      `/recruits/${job?.id}/bookmarks`,
+      { id: job?.id },
+      {
+        headers: {
+          'X-ACCESS-TOKEN': accessToken,
+        },
+      }
+    )
+  }
+
   return (
     <CardWrapper>
       <div className='imgWrapper'>
@@ -16,7 +32,7 @@ const JobCard = ({ job }: IProps) => {
           src='https://image.wanted.co.kr/optimize?src=https://static.wanted.co.kr/images/company/403/wmcdajeixelbaztn__400_400.jpg&w=400&q=undefined'
           alt='자비스앤빌런즈'
         />
-        <button type='button' className='bookmarkBtn'>
+        <button type='button' className='bookmarkBtn' onClick={handleClickBookmark}>
           <BookmarkIcon />
         </button>
       </div>

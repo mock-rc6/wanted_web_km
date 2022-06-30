@@ -70,16 +70,16 @@ const SignUp = ({ email, handleModal }: IProps) => {
 
   const handleClickSubmit = (e: FormEvent) => {
     e.preventDefault()
-    if (!name) {
-      setNameErrMsg('이름은 필수정보입니다.')
-      return
-    }
-    if (!isPwValid) return
-    if (password !== passwordCheck) {
-      setPwErrMsg('영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합하여 8자 이상 입력해 주세요.')
-      return
-    }
-    if (!isCodeValid) return
+    // if (!name) {
+    //   setNameErrMsg('이름은 필수정보입니다.')
+    //   return
+    // }
+    // if (!isPwValid) return
+    // if (password !== passwordCheck) {
+    //   setPwErrMsg('영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합하여 8자 이상 입력해 주세요.')
+    //   return
+    // }
+    // if (!isCodeValid) return
     axios.post(
       'https://dev.odoong.shop/users',
       {

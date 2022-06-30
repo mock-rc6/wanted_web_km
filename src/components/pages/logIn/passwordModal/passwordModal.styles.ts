@@ -13,7 +13,7 @@ export const ModalBackground = styled.div`
   z-index: 9999;
 `
 
-export const ModalWrapper = styled.div`
+export const ModalWrapper = styled.div<{ isErr?: string | null }>`
   display: flex;
   flex-direction: column;
   width: 400px;
@@ -68,9 +68,9 @@ export const ModalWrapper = styled.div`
         height: 50px;
         padding-right: 15px;
         padding-left: 15px;
-        margin-bottom: 32px;
+
         border-radius: 5px;
-        border: 1px solid #e1e2e3;
+        border: 1px solid ${({ isErr }) => (isErr ? '#fe415c' : '#e1e2e3')};
         background-color: #fff;
         font-size: 15px;
         color: #333;
@@ -80,6 +80,12 @@ export const ModalWrapper = styled.div`
         ::placeholder {
           color: #aaaaaa;
         }
+      }
+      p {
+        margin-bottom: 32px;
+        margin-top: 6px;
+        font-size: 12px;
+        color: #fe415c;
       }
     }
     .resetButton {

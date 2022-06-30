@@ -40,7 +40,7 @@ const Login = ({ handleModal }: IProps) => {
     // 가입된 이메일인지 확인요청
     // 가입된 이메일일 경우 비밀번호 입력 모달로 이동
     // 가입되지 않은 이메일일 경우 회원가입 모달로 이동
-    setHasEmail(false)
+    setHasEmail(true)
   }
 
   useOnClickOutside(ref, handleModal)
