@@ -10,7 +10,7 @@ const JobList = () => {
 
   useEffect(() => {
     axios.get('https://dev.odoong.shop/recruits').then((res) => {
-      const data = res.data.result.recruits
+      const data = res.data.result
       setJobData(data)
     })
   }, [])

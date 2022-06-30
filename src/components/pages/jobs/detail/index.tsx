@@ -17,7 +17,7 @@ const JobDetail = () => {
   useEffect(() => {
     axios.get(`https://dev.odoong.shop/recruits/${id}`).then((res) => {
       const { data } = res
-      setDetailData(data.result.recruits)
+      setDetailData(data.result)
     })
   }, [id])
 
