@@ -29,7 +29,23 @@ export const Apply = ({ scrollRef, data }: IProps) => {
           },
         }
       )
-      .then(() => handleModal())
+      .then((res) => {
+        if (res.data.result.status === 0) handleModal()
+      })
+  }
+
+  const handleClickLike = () => {
+    axios
+      .post(
+        `/recruits/${data.id}/likemarks`,
+        { id: data.id },
+        {
+          headers: {
+            'X-ACCESS-TOKEN': accessToken,
+          },
+        }
+      )
+      .then((res) => console.log(res))
   }
 
   const handleModal = () => {
@@ -74,7 +90,7 @@ export const Apply = ({ scrollRef, data }: IProps) => {
         </button>
         <DefaultBtn buttonName='지원하기' />
         <div className='applyBottom'>
-          <button type='button' className='likeBtn'>
+          <button type='button' className='likeBtn' onClick={handleClickLike}>
             <HeartIcon />
             <span>2</span>
           </button>
