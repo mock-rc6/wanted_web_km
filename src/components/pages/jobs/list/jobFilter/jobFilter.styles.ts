@@ -19,27 +19,36 @@ export const JobFilterWrapper = styled.nav<{ isScrolled: boolean }>`
     font-size: 24px;
     margin-bottom: 10px;
 
+    .jobGroupWrapper {
+      position: relative;
+    }
+
     .jobGroup {
+      display: flex;
       padding-top: 3px;
-      margin-right: 15.5px;
       font-size: 24px;
       line-height: 29px;
       font-weight: 700;
       color: #333;
+      cursor: pointer;
     }
 
     .arrowWrapper {
+      margin-left: 15.5px;
       position: relative;
       width: 26px;
       height: 26px;
       border: 1px solid #e1e2e3;
       border-radius: 9999px;
       text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       svg {
+        margin-top: 2px;
         width: 12px;
         height: 12px;
-        margin-bottom: 1px;
       }
     }
 

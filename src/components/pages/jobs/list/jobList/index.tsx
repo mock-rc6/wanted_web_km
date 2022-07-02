@@ -1,19 +1,24 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import JobCard from './jobCard'
-import { IRecruits } from 'types/wanted'
+import axios from 'axios'
 import styled from 'styled-components'
 
-const JobList = () => {
+import JobCard from './jobCard'
+import { IRecruits } from 'types/wanted'
+
+interface IProps {
+  searchParams?: URLSearchParams
+}
+
+const JobList = ({ searchParams }: IProps) => {
   const [jobData, setJobData] = useState<IRecruits[]>([])
 
   useEffect(() => {
-    axios.get('https://dev.odoong.shop/recruits').then((res) => {
+    axios.get(`https://dev.odoong.shop/recruits?${searchParams?.toString()}`).then((res) => {
       const data = res.data.result
       setJobData(data)
     })
-  }, [])
+  }, [searchParams])
 
   return (
     <JobListWrapper>

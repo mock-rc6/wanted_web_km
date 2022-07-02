@@ -1,4 +1,5 @@
 import { FilledArrow } from 'assets'
+import { MouseEvent } from 'react'
 import styled from 'styled-components'
 
 interface IProps {
@@ -6,11 +7,13 @@ interface IProps {
   dd?: string
   arrow?: boolean
   margin?: number
+  id?: string
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
-const FilterButton = ({ dt, dd, arrow, margin }: IProps) => {
+const FilterButton = ({ dt, dd, arrow, margin, id, onClick }: IProps) => {
   return (
-    <ButtonWrapper arrow={arrow} margin={margin}>
+    <ButtonWrapper arrow={arrow} margin={margin} onClick={onClick} id={id}>
       <dt>{dt}</dt>
       <dd>{dd}</dd>
       <span className='arrow'>{arrow && <FilledArrow />} </span>
