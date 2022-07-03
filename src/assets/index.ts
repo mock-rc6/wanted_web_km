@@ -12,7 +12,8 @@ export { ReactComponent as GoogleIcon } from './svg/google.svg'
 export { ReactComponent as AppleIcon } from './svg/apple.svg'
 
 export { ReactComponent as BookmarkIcon } from './svg/bookmark.svg'
-export { ReactComponent as BookmarkLineIcon } from './svg/bookmarkBlue.svg'
+export { ReactComponent as BookmarkLineIcon } from './svg/bookmarkLine.svg'
+export { ReactComponent as BookmarkFilledIcon } from './svg/bookmarkFilled.svg'
 
 export { ReactComponent as HeartIcon } from './svg/heart.svg'
 

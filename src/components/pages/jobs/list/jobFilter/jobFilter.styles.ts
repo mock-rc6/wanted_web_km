@@ -18,10 +18,7 @@ export const JobFilterWrapper = styled.nav<{ isScrolled: boolean }>`
     align-items: center;
     font-size: 24px;
     margin-bottom: 10px;
-
-    .jobGroupWrapper {
-      position: relative;
-    }
+    position: relative;
 
     .jobGroup {
       display: flex;
@@ -52,7 +49,23 @@ export const JobFilterWrapper = styled.nav<{ isScrolled: boolean }>`
       }
     }
 
-    .jobCategory {
+    .selected {
+      display: flex;
+      padding-top: 3px;
+      font-size: 24px;
+      line-height: 29px;
+      font-weight: 400;
+      color: #333;
+      ::before {
+        content: '|';
+        font-size: 28px;
+        line-height: 29px;
+        padding: 3px 24px 0;
+        color: #ececec;
+      }
+    }
+
+    .default {
       padding-top: 3px;
       font-size: 24px;
       line-height: 29px;

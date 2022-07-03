@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import store from 'storejs'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
@@ -10,22 +11,38 @@ interface IProps {
   searchParams?: URLSearchParams
 }
 
+interface IBookMarkData {
+  recruit_id: number
+}
 const JobList = ({ searchParams }: IProps) => {
   const [jobData, setJobData] = useState<IRecruits[]>([])
+  const [bookMarkData, setBookMarkData] = useState<IBookMarkData[]>([])
+  const accessToken = store.get('accessToken')
 
   useEffect(() => {
-    axios.get(`https://dev.odoong.shop/recruits?${searchParams?.toString()}`).then((res) => {
-      const data = res.data.result
-      setJobData(data)
-    })
+    axios
+      .get(`https://dev.odoong.shop/recruits?${searchParams?.toString()}`, {
+        headers: {
+          'X-ACCESS-TOKEN': accessToken,
+        },
+      })
+      .then((res) => {
+        const data = res.data.result
+        setJobData(data.recruits)
+        setBookMarkData(data.bookmarks)
+      })
   }, [searchParams])
+
+  const bookMarkList: number[] = []
+
+  bookMarkData?.map((el) => {
+    return bookMarkList.push(el.recruit_id)
+  })
 
   return (
     <JobListWrapper>
       {jobData?.map((job) => (
-        <Link to={`/joblist/${job.id}`} key={job.id}>
-          <JobCard job={job} />
-        </Link>
+        <JobCard job={job} bookMarkList={bookMarkList} key={job.id} />
       ))}
       <Link to='/joblist/a'>
         <JobCard />

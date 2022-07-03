@@ -8,7 +8,7 @@ const Jobs = () => {
 
   return (
     <>
-      <JobFilter setSearchParams={setSearchParams} searchParams={searchParams} />
+      <JobFilter />
       <JobList searchParams={searchParams} />
       <Footer />
     </>

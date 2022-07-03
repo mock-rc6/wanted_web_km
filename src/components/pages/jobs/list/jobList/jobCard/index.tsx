@@ -4,15 +4,22 @@ import styled from 'styled-components'
 
 import ResponseRateLabel from 'components/common/labels/responseRate'
 import ResRateHighLabel from 'components/common/labels/responseRate/high'
-import { BookmarkIcon } from 'assets'
+import { BookmarkFilledIcon, BookmarkIcon } from 'assets'
 import { IRecruits } from 'types/wanted'
+import { useEffect, useState } from 'react'
 
 interface IProps {
   job?: IRecruits
+  bookMarkList?: number[]
 }
 
-const JobCard = ({ job }: IProps) => {
+const JobCard = ({ job, bookMarkList }: IProps) => {
+  const [isBookMarked, setIsBookMarked] = useState(false)
   const accessToken = store.get('accessToken')
+
+  const inList = bookMarkList?.includes(Number(job?.id))
+
+  // 북마크
   const handleClickBookmark = () => {
     axios.post(
       `/recruits/${job?.id}/bookmarks`,
@@ -25,6 +32,10 @@ const JobCard = ({ job }: IProps) => {
     )
   }
 
+  // if (inList) setIsBookMarked(true)
+
+  // console.log(isBookMarked)
+
   return (
     <CardWrapper>
       <div className='imgWrapper'>
@@ -33,7 +44,7 @@ const JobCard = ({ job }: IProps) => {
           alt='자비스앤빌런즈'
         />
         <button type='button' className='bookmarkBtn' onClick={handleClickBookmark}>
-          <BookmarkIcon />
+          {isBookMarked ? <BookmarkFilledIcon /> : <BookmarkIcon />}
         </button>
       </div>
       <div className='cardContents'>

@@ -1,21 +1,16 @@
 import { MouseEvent, useState } from 'react'
-import { URLSearchParamsInit } from 'react-router-dom'
 import { LinedArrow } from 'assets'
 import FilterButton from 'components/common/buttons/filterButton'
 import TagButton from 'components/common/buttons/tagButton'
 import { JobFilterWrapper, StickyFilter } from './jobFilter.styles'
 import JobGroupSelector from './selector/jobGroup'
-
-interface IProps {
-  searchParams: URLSearchParams
-  setSearchParams: (nextInit: URLSearchParamsInit) => void
-}
+import JobPositionSelector from './selector/jobPosition'
 
 interface IFilters {
   [prop: string]: boolean
 }
 
-const JobFilter = ({ searchParams, setSearchParams }: IProps) => {
+const JobFilter = () => {
   const [isScrolled, setIsScrolled] = useState(false)
 
   const [isFilterOpen, setIsFilterOpen] = useState<IFilters>({
@@ -26,9 +21,14 @@ const JobFilter = ({ searchParams, setSearchParams }: IProps) => {
     techstacks: false,
   })
 
+  // query value 값이 아니고 렌더링 될 string
+  const [selectedJobGroup, setSelectedJobGroup] = useState('전체')
+  const [positions, setPositions] = useState('전체')
+  const [years, setYears] = useState('전체')
+  const [locations, setLocations] = useState('한국')
+
   const handleClickFilters = (e: MouseEvent<HTMLButtonElement>) => {
     setIsFilterOpen({
-      ...isFilterOpen,
       [e.currentTarget.id]: !isFilterOpen[e.currentTarget.id],
     })
   }
@@ -57,27 +57,43 @@ const JobFilter = ({ searchParams, setSearchParams }: IProps) => {
     <JobFilterWrapper isScrolled={isScrolled}>
       <div className='wrapper'>
         <div className='title'>
-          <div className='jobGroupWrapper'>
-            <button type='button' className='jobGroup' id='job_group' onClick={handleClickFilters}>
-              전체
+          <button type='button' className='jobGroup' id='job_group' onClick={handleClickFilters}>
+            {selectedJobGroup}
+            <div className='arrowWrapper'>
+              <LinedArrow />
+            </div>
+          </button>
+          {isFilterOpen.job_group && (
+            <JobGroupSelector
+              selectedJobGroup={selectedJobGroup}
+              setSelectedJobGroup={setSelectedJobGroup}
+              toggle={setIsFilterOpen}
+            />
+          )}
+
+          <button
+            type='button'
+            className={selectedJobGroup === '전체' ? 'default' : 'selected'}
+            id='positions'
+            onClick={handleClickFilters}
+          >
+            {selectedJobGroup === '전체' ? '직군을 선택해주세요.' : `${selectedJobGroup} 전체`}
+            {selectedJobGroup !== '전체' && (
               <div className='arrowWrapper'>
                 <LinedArrow />
               </div>
-            </button>
-            {isFilterOpen.job_group && <JobGroupSelector searchParams={searchParams} />}
-          </div>
-          <button type='button' className='jobCategory' id='positions' onClick={handleClickFilters}>
-            직군을 선택해주세요.
+            )}
           </button>
+          {isFilterOpen.positions && <JobPositionSelector />}
         </div>
       </div>
       <StickyFilter>
         <div className='wrapper'>
           <div className='filterMenu'>
             <div className='category'>
-              <FilterButton dt='지역' dd='한국' margin={10} id='locations' onClick={handleClickFilters} />
+              <FilterButton dt='지역' dd={locations} margin={10} id='locations' onClick={handleClickFilters} />
               <span className='filterCounter'>1</span>
-              <FilterButton dt='경력' dd='전체' margin={10} id='years' onClick={handleClickFilters} arrow />
+              <FilterButton dt='경력' dd={years} margin={10} id='years' onClick={handleClickFilters} arrow />
               <FilterButton dt='기술스택' id='techstacks' onClick={handleClickFilters} arrow />
             </div>
             <FilterButton dt='응답률순' arrow />

@@ -1,12 +1,21 @@
-import { MouseEvent } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-interface IProps {
-  searchParams: URLSearchParams
+interface IFilters {
+  [prop: string]: boolean
 }
 
-const JobGroupSelector = ({ searchParams }: IProps) => {
+interface IProps {
+  selectedJobGroup: string
+  setSelectedJobGroup: (value: string) => void
+  toggle: React.Dispatch<React.SetStateAction<IFilters>>
+}
+
+const JobGroupSelector = ({ selectedJobGroup, setSelectedJobGroup, toggle }: IProps) => {
+  const [searchParams, setSearchParams] = useSearchParams()
+
   const JOB_GROUP = [
+    '전체',
     '개발',
     '경영∙비즈니스',
     '마케팅∙광고',
@@ -28,19 +37,26 @@ const JobGroupSelector = ({ searchParams }: IProps) => {
     '공공∙복지',
   ]
 
-  const handleClickJobGroup = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleClickJobGroup = (groupName: string) => {
+    if (searchParams.has('job_group')) searchParams.delete('job_group')
     searchParams.append('job_group', 'development')
+    setSearchParams(searchParams)
+    setSelectedJobGroup(groupName)
+    toggle({ job_group: false })
   }
 
   return (
     <JobGroupSelectorWrapper>
-      <button type='button'>
-        <span className='all'>전체</span>
-      </button>
       <ul>
-        {JOB_GROUP.map((group, index) => (
-          <button type='button' key={index} onClick={handleClickJobGroup}>
-            <li>{group}</li>
+        {JOB_GROUP.map((groupName, index) => (
+          <button
+            type='button'
+            key={index}
+            onClick={() => {
+              handleClickJobGroup(groupName)
+            }}
+          >
+            <li className={groupName === selectedJobGroup ? 'focused' : 'submenu'}>{groupName}</li>
           </button>
         ))}
       </ul>
@@ -70,24 +86,31 @@ const JobGroupSelectorWrapper = styled.div`
     overflow-y: scroll;
   }
 
-  button {
-    width: 100%;
-    font-size: 16px;
-    color: #333;
-    font-weight: 400;
-    text-align: left;
-  }
-  .all {
-    display: inline-block;
-    padding: 10px 25px;
-  }
+  ul {
+    .focused {
+      color: #36f;
+      font-weight: 500;
+    }
+    .submenu {
+      color: #333;
+      font-weight: 400;
+    }
+    button {
+      width: 100%;
+      font-size: 16px;
+      text-align: left;
+      :hover {
+        background-color: #f9f9f9;
+      }
+    }
 
-  li {
-    text-align: left;
-    padding: 11px 25px 9px;
-    width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    li {
+      text-align: left;
+      padding: 11px 25px 9px;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
 `
