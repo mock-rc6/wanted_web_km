@@ -5,6 +5,7 @@ import Jobs from 'components/pages/jobs'
 import JobDetail from 'components/pages/jobs/detail'
 import ResumeIntro from 'components/pages/resume/intro'
 import ResumeList from 'components/pages/resume/list'
+import Main from 'components/pages/main'
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <GlobalStyles />
       <Routes>
         <Route element={<Layout />}>
-          <Route path='/' element={<Jobs />} />
+          <Route path='/' element={<Main />} />
           <Route path='joblist' element={<Jobs />} />
           <Route path='joblist/:id' element={<JobDetail />} />
           <Route path='resume/intro' element={<ResumeIntro />} />

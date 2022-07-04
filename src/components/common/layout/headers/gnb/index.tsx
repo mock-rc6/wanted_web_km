@@ -21,10 +21,12 @@ const GNB = () => {
         </Modal>
       )}
       <nav>
-        <div className='logo'>
-          <img className='hamburger' src={hamburger} alt='hamburgerMenu' />
-          <img className='logoimg' src={logo} alt='wanted' />
-        </div>
+        <Link to='/'>
+          <div className='logo'>
+            <img className='hamburger' src={hamburger} alt='hamburgerMenu' />
+            <img className='logoimg' src={logo} alt='wanted' />
+          </div>
+        </Link>
         <ul className='menu'>
           <li>
             <Link to='/joblist'>채용</Link>
