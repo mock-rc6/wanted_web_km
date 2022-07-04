@@ -51,11 +51,15 @@ export const JobFilterWrapper = styled.nav<{ isScrolled: boolean }>`
 
     .selected {
       display: flex;
+      max-width: 970px;
       padding-top: 3px;
       font-size: 24px;
       line-height: 29px;
       font-weight: 400;
       color: #333;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
       ::before {
         content: '|';
         font-size: 28px;

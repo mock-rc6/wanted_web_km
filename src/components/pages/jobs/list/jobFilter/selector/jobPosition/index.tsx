@@ -1,64 +1,34 @@
-import { MouseEvent, useState } from 'react'
+import { Dispatch, SetStateAction, Fragment, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import styled from 'styled-components'
+import PositionItem from './jobPositiionItem'
 
-const JobPositionSelector = () => {
+interface IFilters {
+  [prop: string]: boolean
+}
+
+interface IProps {
+  setPositionString: Dispatch<SetStateAction<string>>
+  toggle: Dispatch<SetStateAction<IFilters>>
+}
+
+const JobPositionSelector = ({ setPositionString, toggle }: IProps) => {
   const [searchParams, setSearchParams] = useSearchParams()
-
   const [positionArr, setPositionArr] = useState<string[]>([])
 
-  const handleClickPosition = (e: MouseEvent<HTMLButtonElement>) => {
-    if (positionArr.length >= 5) {
-      alert('최대 5개 선택 가능')
-      return
-    }
-    if (positionArr.includes(String(e.currentTarget.dataset.title))) return
-    setPositionArr([...positionArr, String(e.currentTarget.dataset.title)])
-    searchParams.append('positions', String(e.currentTarget.dataset.query))
-  }
+  const isSelected = positionArr.length > 0
 
   const handleClickSubmit = () => {
+    searchParams.delete('positions')
+    positionArr.map((position: string) => searchParams.append('positions', position))
     setSearchParams(searchParams)
+    setPositionString(positionArr.join(', '))
+    toggle({ positions: false })
   }
 
+  // prettier-ignore
   const jobPosition = [
-    { title: '웹 개발자', query: 'web' },
-    { title: '서버 개발자', query: 'server' },
-    { title: '프론트엔드 개발자', query: 'frontend' },
-    { title: '소프트웨어 엔지니어', query: 'software' },
-    { title: '자바 개발자', query: 'java' },
-    { title: '안드로이드 개발자', query: 'android' },
-    { title: 'iOS 개발자', query: 'ios' },
-    { title: 'Node.js 개발자', query: 'nodejs' },
-    { title: '데이터 엔지니어', query: 'data-engineer' },
-    { title: '파이썬 개발자', query: 'python' },
-    { title: 'DevOps / 시스템 관리자', query: 'devops' },
-    { title: 'C,C++ 개발자', query: 'c' },
-    { title: '시스템,네트워크 관리자', query: 'system' },
-    { title: '머신러닝 엔지니어', query: 'machinelearning' },
-    { title: '데이터 사이언티스트', query: 'data-scientist' },
-    { title: '빅데이터 엔지니어', query: 'bigdata' },
-    { title: 'QA,테스트 엔지니어', query: 'qa' },
-    { title: '개발 매니저', query: 'develop-manager' },
-    { title: '기술지원', query: 'suport' },
-    { title: '보안 엔지니어', query: 'security' },
-    { title: '프로덕트 매니저', query: 'product-manager' },
-    { title: 'PHP 개발자', query: 'php' },
-    { title: '블록체인 플랫폼 엔지니어', query: 'block-chain' },
-    { title: '임베디드 개발자', query: 'embeded' },
-    { title: '웹 퍼블리셔', query: 'web-publisher' },
-    { title: '하드웨어 엔지니어', query: 'hardware' },
-    { title: '크로스플랫폼 앱 개발자', query: 'corss-platform' },
-    { title: '.NET 개발자', query: 'net' },
-    { title: '영상,음성 엔지니어', query: 'video' },
-    { title: 'DBA', query: 'dba' },
-    { title: '그래픽스 엔지니어', query: 'graphics' },
-    { title: 'CTO,Chief Technology Officer', query: 'ctd' },
-    { title: 'VR 엔지니어', query: 'vr' },
-    { title: 'ERP전문가', query: 'erp' },
-    { title: '루비온레일즈 개발자', query: 'ruby' },
-    { title: 'BI 엔지니어', query: 'bi' },
-    { title: 'CIO,Chief Information Officer', query: 'cio' },
+    '웹 개발자', '서버 개발자', '프론트엔드 개발자', '소프트웨어 엔지니어', '자바 개발자', '안드로이드 개발자','iOS 개발자', 'Node.js 개발자', '데이터 엔지니어', '파이썬 개발자', 'DevOps / 시스템 관리자',  'C,C++ 개발자', '시스템,네트워크 관리자', '머신러닝 엔지니어', '데이터 사이언티스트', '빅데이터 엔지니어', 'QA,테스트 엔지니어', '개발 매니저', '기술지원', '보안 엔지니어', '프로덕트 매니저', 'PHP 개발자', '블록체인 플랫폼 엔지니어',  '임베디드 개발자', '웹 퍼블리셔', '하드웨어 엔지니어', '크로스플랫폼 앱 개발자', '.NET 개발자', '영상,음성 엔지니어', 'DBA', '그래픽스 엔지니어', 'CTO,Chief Technology Officer', 'VR 엔지니어', 'ERP전문가', '루비온레일즈 개발자', 'BI 엔지니어', 'CIO,Chief Information Officer',
   ]
 
   return (
@@ -66,20 +36,13 @@ const JobPositionSelector = () => {
       <div className='top'>
         <p className='title'>직무를 선택해 주세요. (최대 5개 선택 가능)</p>
         <ul>
-          <button type='button' className='selectedItem'>
+          <button type='button' className={!isSelected ? 'selectedItem' : 'defaultItem'}>
             <li>개발 전체</li>
           </button>
           {jobPosition.map((position) => (
-            <button
-              key={position.query}
-              type='button'
-              className='defaultItem'
-              data-title={position.title}
-              data-query={position.query}
-              onClick={handleClickPosition}
-            >
-              <li>{position.title}</li>
-            </button>
+            <Fragment key={position}>
+              <PositionItem position={position} positionArr={positionArr} setPositionArr={setPositionArr} />
+            </Fragment>
           ))}
         </ul>
       </div>

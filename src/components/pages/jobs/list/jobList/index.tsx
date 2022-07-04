@@ -44,36 +44,23 @@ const JobList = ({ searchParams }: IProps) => {
       {jobData?.map((job) => (
         <JobCard job={job} bookMarkList={bookMarkList} key={job.id} />
       ))}
-      <Link to='/joblist/a'>
-        <JobCard />
-      </Link>
-      <Link to='/joblist/b'>
-        <JobCard />
-      </Link>
-      <Link to='/joblist/c'>
-        <JobCard />
-      </Link>
-      <Link to='/joblist/d'>
-        <JobCard />
-      </Link>
-      <Link to='/joblist/e'>
-        <JobCard />
-      </Link>
-      <Link to='/joblist/f'>
-        <JobCard />
-      </Link>
-      <Link to='/joblist/g'>
-        <JobCard />
-      </Link>
-      <Link to='/joblist/h'>
-        <JobCard />
-      </Link>
-      <Link to='/joblist/i'>
-        <JobCard />
-      </Link>
-      <Link to='/joblist/j'>
-        <JobCard />
-      </Link>
+      {/* <Link to='/joblist/a'> */}
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
+      <JobCard />
     </JobListWrapper>
   )
 }

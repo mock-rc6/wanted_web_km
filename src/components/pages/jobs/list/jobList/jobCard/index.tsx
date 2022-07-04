@@ -6,7 +6,8 @@ import ResponseRateLabel from 'components/common/labels/responseRate'
 import ResRateHighLabel from 'components/common/labels/responseRate/high'
 import { BookmarkFilledIcon, BookmarkIcon } from 'assets'
 import { IRecruits } from 'types/wanted'
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 interface IProps {
   job?: IRecruits
@@ -16,44 +17,65 @@ interface IProps {
 const JobCard = ({ job, bookMarkList }: IProps) => {
   const [isBookMarked, setIsBookMarked] = useState(false)
   const accessToken = store.get('accessToken')
+  useEffect(() => {
+    if (bookMarkList?.includes(Number(job?.id))) setIsBookMarked(true)
+  }, [bookMarkList, job])
 
-  const inList = bookMarkList?.includes(Number(job?.id))
+  // const formData = new FormData()
+  // const onChangeFile = (event: any) => {
+  //   const file = event.target.files?.[0]
+  //   if (!file) return
+  //   formData.append('images', file)
+  //   axios.post(`/users/resources/images`, formData, {
+  //     headers: {
+  //       'Content-Type': 'multipart/form-data',
+  //       'X-ACCESS-TOKEN': accessToken,
+  //     },
+  //   })
+  // }
 
   // 북마크
   const handleClickBookmark = () => {
-    axios.post(
-      `/recruits/${job?.id}/bookmarks`,
-      { id: job?.id },
-      {
-        headers: {
-          'X-ACCESS-TOKEN': accessToken,
-        },
-      }
-    )
+    axios
+      .post(
+        `/recruits/${job?.id}/bookmarks`,
+        { id: job?.id },
+        {
+          headers: {
+            'X-ACCESS-TOKEN': accessToken,
+          },
+        }
+      )
+      .then(() => {
+        setIsBookMarked((prev) => !prev)
+      })
   }
-
-  // if (inList) setIsBookMarked(true)
-
-  // console.log(isBookMarked)
 
   return (
     <CardWrapper>
       <div className='imgWrapper'>
-        <img
-          src='https://image.wanted.co.kr/optimize?src=https://static.wanted.co.kr/images/company/403/wmcdajeixelbaztn__400_400.jpg&w=400&q=undefined'
-          alt='자비스앤빌런즈'
-        />
+        {/* <form encType='multipart/form-data' onSubmit={onChangeFile}>
+          <input type='file' onChange={onChangeFile} />
+        </form> */}
+        <Link to={`/joblist/${job?.id}`}>
+          <img
+            src='https://image.wanted.co.kr/optimize?src=https://static.wanted.co.kr/images/company/403/wmcdajeixelbaztn__400_400.jpg&w=400&q=undefined'
+            alt='자비스앤빌런즈'
+          />
+        </Link>
         <button type='button' className='bookmarkBtn' onClick={handleClickBookmark}>
           {isBookMarked ? <BookmarkFilledIcon /> : <BookmarkIcon />}
         </button>
       </div>
-      <div className='cardContents'>
-        <h3 className='jobTitle'>{job ? job.title : '[삼쩜삼]프론트엔드 엔지니어'}</h3>
-        <p className='companyName'>{job ? job.company_name : '자비스앤빌런즈(삼쩜삼)'}</p>
-        {job ? <ResponseRateLabel rate={job.response_rate} /> : <ResRateHighLabel />}
-        <p className='companyLocation'>서울 ∙ 한국</p>
-        <p className='reward'>채용보상금 1,000,000원</p>
-      </div>
+      <Link to={`/joblist/${job?.id}`}>
+        <div className='cardContents'>
+          <h3 className='jobTitle'>{job ? job.title : '[삼쩜삼]프론트엔드 엔지니어'}</h3>
+          <p className='companyName'>{job ? job.company_name : '자비스앤빌런즈(삼쩜삼)'}</p>
+          {job ? <ResponseRateLabel rate={job.response_rate} /> : <ResRateHighLabel />}
+          <p className='companyLocation'>서울 ∙ 한국</p>
+          <p className='reward'>채용보상금 1,000,000원</p>
+        </div>
+      </Link>
     </CardWrapper>
   )
 }

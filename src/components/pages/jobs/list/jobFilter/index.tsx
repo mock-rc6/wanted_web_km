@@ -5,6 +5,8 @@ import TagButton from 'components/common/buttons/tagButton'
 import { JobFilterWrapper, StickyFilter } from './jobFilter.styles'
 import JobGroupSelector from './selector/jobGroup'
 import JobPositionSelector from './selector/jobPosition'
+import LocationModal from './selector/location'
+import Modal from 'components/common/modal'
 
 interface IFilters {
   [prop: string]: boolean
@@ -23,9 +25,9 @@ const JobFilter = () => {
 
   // query value 값이 아니고 렌더링 될 string
   const [selectedJobGroup, setSelectedJobGroup] = useState('전체')
-  const [positions, setPositions] = useState('전체')
-  const [years, setYears] = useState('전체')
+  const [positionString, setPositionString] = useState('')
   const [locations, setLocations] = useState('한국')
+  const [years, setYears] = useState('전체')
 
   const handleClickFilters = (e: MouseEvent<HTMLButtonElement>) => {
     setIsFilterOpen({
@@ -70,21 +72,24 @@ const JobFilter = () => {
               toggle={setIsFilterOpen}
             />
           )}
-
           <button
             type='button'
             className={selectedJobGroup === '전체' ? 'default' : 'selected'}
             id='positions'
             onClick={handleClickFilters}
           >
-            {selectedJobGroup === '전체' ? '직군을 선택해주세요.' : `${selectedJobGroup} 전체`}
+            {selectedJobGroup === '전체' && '직군을 선택해주세요.'}
+            {selectedJobGroup !== '전체' && positionString.length > 0 && positionString}
+            {selectedJobGroup !== '전체' && positionString.length === 0 && `${selectedJobGroup} 전체`}
             {selectedJobGroup !== '전체' && (
               <div className='arrowWrapper'>
                 <LinedArrow />
               </div>
             )}
           </button>
-          {isFilterOpen.positions && <JobPositionSelector />}
+          {isFilterOpen.positions && selectedJobGroup !== '전체' && (
+            <JobPositionSelector setPositionString={setPositionString} toggle={setIsFilterOpen} />
+          )}
         </div>
       </div>
       <StickyFilter>
@@ -98,6 +103,11 @@ const JobFilter = () => {
             </div>
             <FilterButton dt='응답률순' arrow />
           </div>
+          {isFilterOpen.locations && (
+            <Modal>
+              <LocationModal toggle={setIsFilterOpen} />
+            </Modal>
+          )}
           <hr className='divider' />
           <div className='buttons'>
             {hashTags.map((tag, index) => (
