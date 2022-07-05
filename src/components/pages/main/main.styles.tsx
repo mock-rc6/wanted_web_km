@@ -3,15 +3,38 @@ import styled from 'styled-components'
 export const MainWrapper = styled.div`
   margin-top: 50px;
   width: 100%;
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      margin-left: 5px;
+    }
+  }
+
+  .subtitle {
+    margin: 5px 0 0;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: normal;
+    vertical-align: middle;
+    color: #767676 !important;
+  }
+
   h1 {
     font-size: 22px;
-    line-height: 1.33;
+    line-height: 24px;
     font-weight: 700;
     color: #333;
   }
   .insight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 1060px;
-    padding: 60px 0;
+    padding: 80px 0;
     margin: 0 auto;
 
     .insightCardList {
@@ -96,11 +119,31 @@ export const MainWrapper = styled.div`
     }
   }
 
+  .subTitle {
+    margin: 5px 0 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+    vertical-align: middle;
+    color: #767676;
+    cursor: pointer;
+    margin-bottom: 30px;
+
+    svg {
+      transform: rotate(-90deg);
+    }
+  }
+
   .articles {
     width: 1060px;
     padding: 60px 0;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    .articlesUl {
+      display: flex;
+    }
   }
 `

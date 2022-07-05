@@ -18,5 +18,6 @@ export { ReactComponent as BookmarkFilledIcon } from './svg/bookmarkFilled.svg'
 export { ReactComponent as HeartIcon } from './svg/heart.svg'
 
 export { ReactComponent as InfoIcon } from './svg/infoIcon.svg'
+export { ReactComponent as QuestionIcon } from './svg/question.svg'
 
 export { ReactComponent as DotsIcon } from './svg/dots.svg'

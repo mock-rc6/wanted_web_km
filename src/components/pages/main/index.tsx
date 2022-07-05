@@ -1,4 +1,5 @@
-import { LinedArrow } from 'assets'
+import { LinedArrow, QuestionIcon } from 'assets'
+import ArticleCard from './articleCard'
 import Carousel from './carousel'
 import InsightCard from './insightCard'
 import { MainWrapper } from './main.styles'
@@ -8,7 +9,9 @@ const Main = () => {
     <MainWrapper>
       <Carousel />
       <section className='insight'>
-        <h1>나에게 필요한 커리어 인사이트</h1>
+        <div className='title'>
+          <h1>나에게 필요한 커리어 인사이트</h1> <QuestionIcon />
+        </div>
         <ul className='insightCardList'>
           <InsightCard />
           <InsightCard />
@@ -49,6 +52,15 @@ const Main = () => {
       </section>
       <section className='articles'>
         <h1>3분만에 읽는 Wanted+ 아티클</h1>
+        <span className='subTitle'>
+          아티클 전체보기 <LinedArrow />
+        </span>
+        <ul className='articlesUl'>
+          <ArticleCard />
+          <ArticleCard />
+          <ArticleCard />
+          <ArticleCard />
+        </ul>
       </section>
     </MainWrapper>
   )

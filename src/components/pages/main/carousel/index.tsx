@@ -17,6 +17,7 @@ const Carousel = () => {
     draggable: true,
     focusOnSelect: true,
     arrow: true,
+    autoplay: true,
   }
 
   return (
