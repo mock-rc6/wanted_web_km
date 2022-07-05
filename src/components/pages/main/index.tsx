@@ -1,10 +1,12 @@
 import { LinedArrow } from 'assets'
+import Carousel from './carousel'
 import InsightCard from './insightCard'
 import { MainWrapper } from './main.styles'
 
 const Main = () => {
   return (
     <MainWrapper>
+      <Carousel />
       <section className='insight'>
         <h1>나에게 필요한 커리어 인사이트</h1>
         <ul className='insightCardList'>
