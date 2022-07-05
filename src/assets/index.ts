@@ -5,19 +5,20 @@ export { ReactComponent as LinedArrow } from './svg/linedArrow.svg'
 export { ReactComponent as FilledArrow } from './svg/filledArrow.svg'
 export { ReactComponent as XButton } from './svg/xButton.svg'
 export { ReactComponent as MailIcon } from './svg/mail.svg'
-
 export { ReactComponent as KakaoIcon } from './svg/kakao.svg'
 export { ReactComponent as FacebookIcon } from './svg/facebook.svg'
 export { ReactComponent as GoogleIcon } from './svg/google.svg'
 export { ReactComponent as AppleIcon } from './svg/apple.svg'
-
 export { ReactComponent as BookmarkIcon } from './svg/bookmark.svg'
 export { ReactComponent as BookmarkLineIcon } from './svg/bookmarkLine.svg'
 export { ReactComponent as BookmarkFilledIcon } from './svg/bookmarkFilled.svg'
-
 export { ReactComponent as HeartIcon } from './svg/heart.svg'
-
 export { ReactComponent as InfoIcon } from './svg/infoIcon.svg'
 export { ReactComponent as QuestionIcon } from './svg/question.svg'
-
 export { ReactComponent as DotsIcon } from './svg/dots.svg'
+export { ReactComponent as Logo } from './svg/logo.svg'
+export { ReactComponent as WhiteArrow } from './svg/whiteArrow.svg'
+export { ReactComponent as SearchBigIcon } from './svg/search_big.svg'
+export { ReactComponent as ProfileIcon } from './svg/profile.svg'
+export { ReactComponent as MatchUpIcon } from './svg/matchup.svg'
+export { ReactComponent as FilterIcon } from './svg/filter.svg'

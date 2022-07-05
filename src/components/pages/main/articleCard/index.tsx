@@ -17,7 +17,7 @@ const ArticleCard = () => {
 export default ArticleCard
 
 const ArticleCardWrapper = styled.li`
-  width: 270px;
+  width: 260px;
   list-style: none;
   padding: 10px;
 
