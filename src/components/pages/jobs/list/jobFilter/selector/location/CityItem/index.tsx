@@ -13,8 +13,8 @@ const CityItem = ({ el, selectedCity, setSelectedCity }: IProps) => {
   const handleClickProvince = (e: MouseEvent<HTMLButtonElement>) => {
     if (selectedCity.includes(el)) {
       setIsSelected(false)
-      selectedCity.splice(selectedCity.indexOf(el), 1)
-      setSelectedCity(selectedCity)
+      const restArr = selectedCity.filter((city) => city !== e.currentTarget.value)
+      setSelectedCity(restArr)
       return
     }
     setIsSelected(true)

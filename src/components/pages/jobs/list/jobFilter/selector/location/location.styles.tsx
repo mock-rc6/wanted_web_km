@@ -191,9 +191,8 @@ export const ModalWrapper = styled.div`
 
     .locationItem {
       display: inline-block;
-
       margin: 10px 6px 0 0;
-      padding: 0 16px 0 15px;
+      padding: 2px 16px 0 15px;
       background: #fff;
       border: 1px solid #36f;
       border-radius: 17px;
@@ -203,6 +202,11 @@ export const ModalWrapper = styled.div`
       font-style: normal;
       letter-spacing: normal;
       color: #36f;
+      cursor: pointer;
+
+      svg {
+        width: 16px;
+      }
     }
 
     p {

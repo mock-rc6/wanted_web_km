@@ -29,6 +29,8 @@ const JobFilter = () => {
   const [locations, setLocations] = useState('한국')
   const [years, setYears] = useState('전체')
 
+  console.log(locations)
+
   const handleClickFilters = (e: MouseEvent<HTMLButtonElement>) => {
     setIsFilterOpen({
       [e.currentTarget.id]: !isFilterOpen[e.currentTarget.id],
@@ -105,7 +107,7 @@ const JobFilter = () => {
           </div>
           {isFilterOpen.locations && (
             <Modal>
-              <LocationModal toggle={setIsFilterOpen} />
+              <LocationModal toggle={setIsFilterOpen} setLocations={setLocations} />
             </Modal>
           )}
           <hr className='divider' />

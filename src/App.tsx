@@ -6,6 +6,7 @@ import JobDetail from 'components/pages/jobs/detail'
 import ResumeIntro from 'components/pages/resume/intro'
 import ResumeList from 'components/pages/resume/list'
 import Main from 'components/pages/main'
+import ResumeWrite from 'components/pages/resume/write'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='joblist/:id' element={<JobDetail />} />
           <Route path='resume/intro' element={<ResumeIntro />} />
           <Route path='resume/list' element={<ResumeList />} />
+          <Route path='resume/write' element={<ResumeWrite />} />
           <Route path='*' element={<div>404</div>} />
         </Route>
       </Routes>

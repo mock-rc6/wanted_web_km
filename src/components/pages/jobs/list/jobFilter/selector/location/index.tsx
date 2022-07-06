@@ -1,7 +1,7 @@
 import { XButton } from 'assets'
 import DefaultBtn from 'components/common/buttons/default'
 import { ModalBackground } from 'components/pages/signUp/signUp.styles'
-import { Dispatch, Fragment, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, Fragment, MouseEvent, SetStateAction, useEffect, useState } from 'react'
 
 import { useSearchParams } from 'react-router-dom'
 import CityItem from './CityItem'
@@ -14,9 +14,10 @@ interface IFilters {
 
 interface IProps {
   toggle: Dispatch<SetStateAction<IFilters>>
+  setLocations: Dispatch<SetStateAction<string>>
 }
 
-const LocationModal = ({ toggle }: IProps) => {
+const LocationModal = ({ toggle, setLocations }: IProps) => {
   const [selectedMetroCity, setSelectedMetroCity] = useState<string[]>([])
   const [selectedCity, setSelectedCity] = useState<string[]>([])
   const [selectedLocation, setSelectedLocation] = useState<string[]>([])
@@ -34,7 +35,13 @@ const LocationModal = ({ toggle }: IProps) => {
     selectedCity.forEach((el) => tempQueryArr.push(`서울.${el}`))
     tempQueryArr.forEach((el) => searchParams.append('locations', el))
     setSearchParams(searchParams)
+    setLocations('서울 외')
     toggle({ locations: false })
+  }
+
+  const handleClickTag = (e: MouseEvent<HTMLSpanElement>) => {
+    const restArr = selectedCity.filter((city) => city !== e.currentTarget.dataset.name?.substring(3))
+    setSelectedCity(restArr)
   }
 
   // prettier-ignore
@@ -112,7 +119,9 @@ const LocationModal = ({ toggle }: IProps) => {
                 <>
                   {selectedLocation.map((el) => (
                     <li className='locationItem' key={el}>
-                      <span>{el}</span>
+                      <span data-name={el} role='button' onClick={handleClickTag} tabIndex={0}>
+                        {el} ✕
+                      </span>
                     </li>
                   ))}
                 </>
