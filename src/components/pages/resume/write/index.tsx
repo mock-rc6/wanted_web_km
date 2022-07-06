@@ -6,10 +6,15 @@ import Link from './link'
 import Skill from './skill'
 import ETC from './etc'
 import { ResumeWriteWrapper } from './write.styles'
+import ResumeHeader from './writeHeader'
+import Title from './title'
+import ResumeFooter from './writeFooter'
 
 const ResumeWrite = () => {
   return (
     <ResumeWriteWrapper>
+      <ResumeHeader />
+      <Title />
       <Introduce />
       <Carrer />
       <Education />
@@ -17,6 +22,7 @@ const ResumeWrite = () => {
       <ETC />
       <Language />
       <Link />
+      <ResumeFooter />
     </ResumeWriteWrapper>
   )
 }
