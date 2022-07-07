@@ -8,6 +8,8 @@ import ResumeList from 'components/pages/resume/list'
 import Main from 'components/pages/main'
 import ResumeWrite from 'components/pages/resume/write'
 import MyProfile from 'components/pages/mypage/myWanted'
+import MyLike from 'components/pages/mypage/myLike'
+import MyBookmark from 'components/pages/mypage/myBookmark'
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path='resume/list' element={<ResumeList />} />
           <Route path='resume/write' element={<ResumeWrite />} />
           <Route path='profile' element={<MyProfile />} />
+          <Route path='profile/likes' element={<MyLike />} />
+          <Route path='profile/bookmarks' element={<MyBookmark />} />
           <Route path='*' element={<div>404</div>} />
         </Route>
       </Routes>
