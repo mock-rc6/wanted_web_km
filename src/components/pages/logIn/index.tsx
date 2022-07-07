@@ -10,6 +10,7 @@ import { MailIcon, XButton } from 'assets'
 
 import { ModalBackground, ModalWrapper } from './login.styles'
 import PasswordModal from './passwordModal'
+import axios from 'axios'
 
 interface IProps {
   handleModal: () => void
@@ -40,7 +41,11 @@ const Login = ({ handleModal }: IProps) => {
     // 가입된 이메일인지 확인요청
     // 가입된 이메일일 경우 비밀번호 입력 모달로 이동
     // 가입되지 않은 이메일일 경우 회원가입 모달로 이동
-    setHasEmail(true)
+    axios.get(`https://dev.odoong.shop/users/emails?email=${email}`).then((res) => {
+      if (res.data.code !== 1000) {
+        setHasEmail(true)
+      } else setHasEmail(false)
+    })
   }
 
   useOnClickOutside(ref, handleModal)
