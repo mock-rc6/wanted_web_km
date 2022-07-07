@@ -1,17 +1,21 @@
-import { HeaderWrapper } from './gnb.styles'
-import hamburger from 'assets/img/hamburger.webp'
-import logo from 'assets/img/logo.png'
-import { BetaIcon, NewIcon, SearchIcon } from 'assets'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import store from 'storejs'
+import { HeaderWrapper } from './gnb.styles'
+import { BetaIcon, NewIcon, SearchIcon } from 'assets'
+import logo from 'assets/img/logo.png'
+import hamburger from 'assets/img/hamburger.webp'
 import Modal from 'components/common/modal'
 import Login from 'components/pages/logIn'
-import { Link } from 'react-router-dom'
+import Profile from './profile'
 
 const GNB = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const handleModal = () => {
     setIsModalOpen((prev) => !prev)
   }
+
+  const accessToken = store.get('accessToken')
 
   return (
     <HeaderWrapper>
@@ -49,9 +53,13 @@ const GNB = () => {
           <ul>
             <SearchIcon />
             <li>
-              <button type='button' onClick={handleModal}>
-                회원가입/로그인
-              </button>
+              {accessToken ? (
+                <Profile />
+              ) : (
+                <button type='button' onClick={handleModal}>
+                  회원가입/로그인
+                </button>
+              )}
             </li>
             <li>
               <div className='divider'>|</div>
