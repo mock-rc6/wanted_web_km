@@ -39,7 +39,7 @@ export const HeaderWrapper = styled.header`
 
     .menu {
       display: flex;
-      li {
+      .default {
         position: relative;
         vertical-align: middle;
         height: 50px;
@@ -52,6 +52,21 @@ export const HeaderWrapper = styled.header`
           border-bottom: 2px solid #e5e5e5;
           cursor: pointer;
         }
+        svg {
+          position: absolute;
+          top: 12px;
+          right: -5px;
+        }
+      }
+      .selected {
+        position: relative;
+        vertical-align: middle;
+        height: 50px;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 600;
+        padding: 15px;
+        border-bottom: 2px solid #36f;
         svg {
           position: absolute;
           top: 12px;

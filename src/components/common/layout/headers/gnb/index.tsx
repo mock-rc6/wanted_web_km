@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import store from 'storejs'
 import { HeaderWrapper } from './gnb.styles'
 import { BetaIcon, NewIcon, SearchIcon } from 'assets'
@@ -32,19 +32,19 @@ const GNB = () => {
           </div>
         </Link>
         <ul className='menu'>
-          <li>
-            <Link to='/joblist'>채용</Link>
-          </li>
-          <li>이벤트</li>
-          <li>직군별 연봉</li>
-          <li>
-            <Link to='/resume/intro'>이력서</Link>
-          </li>
-          <li>
+          <NavLink to='/joblist' className={({ isActive }) => (isActive ? 'selected' : 'default')}>
+            <li>채용</li>
+          </NavLink>
+          <li className='default'>이벤트</li>
+          <li className='default'>직군별 연봉</li>
+          <NavLink to='/resume/intro' className={({ isActive }) => (isActive ? 'selected' : 'default')}>
+            <li>이력서</li>
+          </NavLink>
+          <li className='default'>
             커뮤니티 <NewIcon />
           </li>
-          <li>프리랜서</li>
-          <li>
+          <li className='default'>프리랜서</li>
+          <li className='default'>
             AI 합격예측
             <BetaIcon />
           </li>

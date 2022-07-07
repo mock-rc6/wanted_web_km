@@ -26,6 +26,7 @@ const MyBookmarkWrapper = styled.main`
   padding-top: 50px;
 
   h2 {
+    margin-left: 10px;
     font-size: 20px;
     font-weight: 700;
     color: #333;

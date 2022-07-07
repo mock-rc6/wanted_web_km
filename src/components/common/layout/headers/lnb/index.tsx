@@ -1,15 +1,22 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const MyMenu = () => {
   return (
     <MyMenuWrapper>
       <li>MY 원티드</li>
-      <li>프로필</li>
+      <Link to='/profile'>
+        <li>프로필</li>
+      </Link>
       <hr />
       <li>지원 현황</li>
       <li>지원받기 현황</li>
-      <li>좋아요</li>
-      <li>북마크</li>
+      <Link to='/profile/likes'>
+        <li>좋아요</li>
+      </Link>
+      <Link to='/profile/bookmarks'>
+        <li>북마크</li>
+      </Link>
       <hr />
       <li>추천</li>
       <li>포인트</li>
