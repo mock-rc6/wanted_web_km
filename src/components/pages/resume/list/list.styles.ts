@@ -9,6 +9,10 @@ export const ListWrapper = styled.div`
   background-color: #f8f8fa;
   padding-top: 50px;
 
+  a {
+    width: 100%;
+  }
+
   .listBody {
     width: 1060px;
     margin: 0 auto;
@@ -47,6 +51,7 @@ export const ListWrapper = styled.div`
     }
     .listContents {
       display: flex;
+      flex-wrap: wrap;
 
       .default {
         display: flex;

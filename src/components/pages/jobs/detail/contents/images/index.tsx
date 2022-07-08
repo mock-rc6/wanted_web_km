@@ -18,7 +18,7 @@ const Images = ({ url }: IProps) => {
     'https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F403%2Foposozunwdmlggw5__1080_790.jpg&w=1000&q=75',
   ]
 
-  if (url) imgUrls = url
+  // if (url.length > 0) imgUrls = url
 
   useEffect(() => {
     if (scrollRef.current)
@@ -48,11 +48,24 @@ const Images = ({ url }: IProps) => {
           <LinedArrow />
         </button>
         <div className='imagesBox' ref={scrollRef}>
-          {imgUrls.map((element) => (
-            <div className='imageSlide' key={element}>
-              <img src={element} alt='채용공고 이미지' />
-            </div>
-          ))}
+          {url?.length > 0 && (
+            <>
+              {url?.map((element) => (
+                <div className='imageSlide' key={element}>
+                  <img src={`https://dev.odoong.shop/resources${element}`} alt='채용공고 이미지' />
+                </div>
+              ))}{' '}
+            </>
+          )}
+          {url?.length === 0 && (
+            <>
+              {imgUrls.map((element) => (
+                <div className='imageSlide' key={element}>
+                  <img src={element} alt='채용공고 이미지' />
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </ImagesWrapper>
     </div>

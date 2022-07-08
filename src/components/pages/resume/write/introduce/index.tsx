@@ -2,7 +2,12 @@ import { useCallback, useRef } from 'react'
 import styled from 'styled-components'
 import Guidance from '../guidance'
 
-const Introduce = () => {
+interface IProps {
+  introduction: string
+  setIntroduction: (value: string) => void
+}
+
+const Introduce = ({ introduction, setIntroduction }: IProps) => {
   const textRef = useRef<any>(null)
   const handleResizeHeight = useCallback(() => {
     textRef.current.style.height = `${textRef.current.scrollHeight}px`
@@ -19,6 +24,8 @@ const Introduce = () => {
         ref={textRef}
         onInput={handleResizeHeight}
         placeholder='간단한 자기소개를 통해 이력서를 돋보이게 만들어보세요. (3~5줄 권장)'
+        defaultValue={introduction.length > 0 ? introduction : ''}
+        onChange={(e) => setIntroduction(e.currentTarget.value)}
       />
     </IntroduceWrapper>
   )

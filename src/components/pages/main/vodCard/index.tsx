@@ -1,16 +1,26 @@
 import styled from 'styled-components'
 
-const VODCard = () => {
+interface IProps {
+  el: {
+    url: string
+    playtime: string
+    author: string
+    title: string
+    contents: string
+  }
+}
+
+const VODCard = ({ el }: IProps) => {
   return (
     <VODCardWrapper>
       <div className='imgWrapper'>
-        <img src='https://image.wanted.co.kr/optimize?src=http%3A%2F%2Fwanted.video.kr.kollus.com%2Fkr%2Fsnapshot%2Fwanted%2F20210429%2F9%2F17633650.jpg&w=undefined&q=75' />
-        <span className='playtime'>24:01</span>
+        <img src={el.url} alt={el.title} />
+        <span className='playtime'>{el.playtime}</span>
       </div>
       <div className='contentsWrapper'>
-        <p className='author'>원티드랩 안드레</p>
-        <p className='articleTitle'>Wanted Talk Engineering #2: 성능 최적화와 자동화</p>
-        <p className='description'>[무료] 성능 최적화와 자동화 : Wanted Talk Engineering #2 </p>
+        <p className='author'>{el.author}</p>
+        <p className='articleTitle'>{el.title}</p>
+        <p className='description'>{el.contents}</p>
       </div>
     </VODCardWrapper>
   )

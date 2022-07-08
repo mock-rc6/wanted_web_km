@@ -6,7 +6,7 @@ import ResponseRateLabel from 'components/common/labels/responseRate'
 import ResRateHighLabel from 'components/common/labels/responseRate/high'
 import { BookmarkFilledIcon, BookmarkIcon } from 'assets'
 import { IRecruits } from 'types/wanted'
-import { ChangeEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 interface IProps {
@@ -21,24 +21,11 @@ const JobCard = ({ job, bookMarkList }: IProps) => {
     if (bookMarkList?.includes(Number(job?.id))) setIsBookMarked(true)
   }, [bookMarkList, job])
 
-  // const formData = new FormData()
-  // const onChangeFile = (event: any) => {
-  //   const file = event.target.files?.[0]
-  //   if (!file) return
-  //   formData.append('images', file)
-  //   axios.post(`/users/resources/images`, formData, {
-  //     headers: {
-  //       'Content-Type': 'multipart/form-data',
-  //       'X-ACCESS-TOKEN': accessToken,
-  //     },
-  //   })
-  // }
-
   // 북마크
   const handleClickBookmark = () => {
     axios
       .post(
-        `/recruits/${job?.id}/bookmarks`,
+        `https://dev.odoong.shop/recruits/${job?.id}/bookmarks`,
         { id: job?.id },
         {
           headers: {
@@ -54,14 +41,12 @@ const JobCard = ({ job, bookMarkList }: IProps) => {
   return (
     <CardWrapper>
       <div className='imgWrapper'>
-        {/* <form encType='multipart/form-data' onSubmit={onChangeFile}>
-          <input type='file' onChange={onChangeFile} />
-        </form> */}
         <Link to={`/joblist/${job?.id}`}>
-          <img
-            src='https://image.wanted.co.kr/optimize?src=https://static.wanted.co.kr/images/company/403/wmcdajeixelbaztn__400_400.jpg&w=400&q=undefined'
-            alt='자비스앤빌런즈'
-          />
+          {job?.photos[0].length ? (
+            <img src={`https://dev.odoong.shop/resources${job?.photos[0]}`} />
+          ) : (
+            <img src='https://image.wanted.co.kr/optimize?src=https://static.wanted.co.kr/images/company/12366/stqnylud5cbzas4c__400_400.jpg&w=400&q=75' />
+          )}
         </Link>
         <button type='button' className='bookmarkBtn' onClick={handleClickBookmark}>
           {isBookMarked ? <BookmarkFilledIcon /> : <BookmarkIcon />}

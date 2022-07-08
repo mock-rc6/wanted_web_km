@@ -1,14 +1,21 @@
 import styled from 'styled-components'
 
-const ArticleCard = () => {
+interface IProps {
+  el: {
+    url: string
+    title: string
+    hashtag: string
+  }
+}
+const ArticleCard = ({ el }: IProps) => {
   return (
     <ArticleCardWrapper>
       <div className='imgWrapper'>
-        <img src='https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fevents%2F2154%2Faefa9abe.jpg&amp;w=undefined&amp;q=75' />
+        <img src={el.url} alt={el.title} />
       </div>
       <div className='contentsWrapper'>
-        <p className='articleTitle'>핀테크 회사 대표가 된 개발자</p>
-        <p className='hashTag'>#개발 #취업/이직 #조직문화 </p>
+        <p className='articleTitle'>{el.title}</p>
+        <p className='hashTag'>{el.hashtag} </p>
       </div>
     </ArticleCardWrapper>
   )

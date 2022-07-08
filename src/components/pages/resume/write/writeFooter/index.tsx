@@ -1,15 +1,20 @@
 import styled from 'styled-components'
 
-const ResumeFooter = () => {
+interface IProps {
+  handleClickSubmit: () => void
+  handleClickTemp: () => void
+}
+
+const ResumeFooter = ({ handleClickSubmit, handleClickTemp }: IProps) => {
   return (
     <FooterWrapper>
       <div className='footer'>
         <div className='footerLeft'>💪 400자 이상 작성하시면 이력서를 완료할 수 있어요!</div>
         <div className='footerRight'>
-          <button className='outlined' type='button'>
+          <button className='outlined' type='button' onClick={handleClickTemp}>
             임시 저장
           </button>
-          <button className='filled' type='button'>
+          <button className='filled' type='button' onClick={handleClickSubmit}>
             작성 완료
           </button>
         </div>

@@ -23,6 +23,7 @@ function App() {
           <Route path='resume/intro' element={<ResumeIntro />} />
           <Route path='resume/list' element={<ResumeList />} />
           <Route path='resume/write' element={<ResumeWrite />} />
+          <Route path='resume/write/:id' element={<ResumeWrite />} />
           <Route path='profile' element={<MyProfile />} />
           <Route path='profile/likes' element={<MyLike />} />
           <Route path='profile/bookmarks' element={<MyBookmark />} />

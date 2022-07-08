@@ -1,16 +1,32 @@
 import JobCard from 'components/pages/jobs/list/jobList/jobCard'
 import styled from 'styled-components'
+import store from 'storejs'
+import { Fragment, useEffect, useState } from 'react'
+import axios from 'axios'
 
 const MyLike = () => {
+  const accessToken = store.get('accessToken')
+  const [data, setData] = useState<any>()
+  useEffect(() => {
+    axios
+      .get('https://dev.odoong.shop/mypages/likemarks', {
+        headers: {
+          'X-ACCESS-TOKEN': accessToken,
+        },
+      })
+      .then((res) => setData(res.data.result))
+  }, [accessToken])
+
   return (
     <MyLikeWrapper>
       <div className='myPage'>
         <h2>좋아요</h2>
         <div className='myWantedContents'>
-          <JobCard />
-          <JobCard />
-          <JobCard />
-          <JobCard />
+          {data?.map((el: any) => (
+            <Fragment key={el.id}>
+              <JobCard job={el} />
+            </Fragment>
+          ))}
         </div>
       </div>
     </MyLikeWrapper>

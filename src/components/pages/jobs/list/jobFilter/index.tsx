@@ -29,8 +29,6 @@ const JobFilter = () => {
   const [locations, setLocations] = useState('한국')
   const [years, setYears] = useState('전체')
 
-  console.log(locations)
-
   const handleClickFilters = (e: MouseEvent<HTMLButtonElement>) => {
     setIsFilterOpen({
       [e.currentTarget.id]: !isFilterOpen[e.currentTarget.id],

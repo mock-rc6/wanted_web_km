@@ -1,5 +1,5 @@
 export interface IJobDetail {
-  photos: []
+  photos: string[]
   title: string
   response_rate: number
   detail: string
@@ -13,4 +13,5 @@ export interface IRecruits {
   title: string
   company_name: string
   response_rate: number
+  photos: string[]
 }

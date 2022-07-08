@@ -58,17 +58,7 @@ export const ApplyBox = styled.section<{ isScrolled: boolean }>`
       margin-right: 8px;
     }
   }
-  .applyBtn {
-    width: 100%;
-    height: 50px;
-    border-radius: 25px;
-    background-color: #36f;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: normal;
-    color: #fff;
-    text-align: center;
-  }
+
   .applyBottom {
     margin-top: 24px;
     height: 30px;

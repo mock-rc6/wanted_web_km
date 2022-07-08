@@ -1,9 +1,15 @@
 import styled from 'styled-components'
 
-const AddButton = () => {
+interface IProps {
+  onClick?: () => void
+}
+
+const AddButton = ({ onClick }: IProps) => {
   return (
     <AddButtonWrapper>
-      <button type='button'>+ 추가</button>
+      <button type='button' onClick={onClick}>
+        + 추가
+      </button>
     </AddButtonWrapper>
   )
 }

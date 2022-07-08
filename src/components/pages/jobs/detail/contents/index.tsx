@@ -14,14 +14,13 @@ interface IProps {
 const Contents = ({ scrollRef, data }: IProps) => {
   const map =
     'https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?w=700&h=254&markers=type:d|size:mid|color:red|pos:127.0480901%2037.5038089&format=png&scale=2&X-NCP-APIGW-API-KEY-ID=6j3nqcgb0s'
-
   return (
     <div>
       <Images url={data?.photos} />
       <JobContents>
         <h2>{data ? data.title : '[삼쩜삼] 프론트엔드 엔지니어'}</h2>
         <div className='company'>
-          <span className='companyName'>자비스앤빌런즈(삼쩜삼)</span>
+          <span className='companyName'>{data ? data.company_name : '자비스앤빌런즈'} </span>
           {data ? <ResponseRateLabel rate={data.response_rate} /> : <ResRateHighLabel />}
           <span className='location'>
             <span className='divider'>|</span>
@@ -44,11 +43,11 @@ const Contents = ({ scrollRef, data }: IProps) => {
           </dl>
           <dl>
             <dt>근무지역</dt>
-            <dd>서울특별시 강남구 테헤란로 332 HJ타워, 10층</dd>
+            <dd>{data.address}</dd>
           </dl>
           <img src={map} alt='map' />
         </div>
-        <CompanyCard />
+        <CompanyCard companyName={data.company_name} id={data.company_id} logo={data.profile_photo} />
         <WarningCard />
       </JobContents>
     </div>

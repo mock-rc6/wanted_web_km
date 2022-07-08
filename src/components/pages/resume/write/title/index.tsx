@@ -1,13 +1,42 @@
 import styled from 'styled-components'
 
-const Title = () => {
+interface IProps {
+  title: string
+  name: string
+  email: string
+  phone: string
+  setTitle: (value: string) => void
+  setName: (value: string) => void
+  setEmail: (value: string) => void
+  setPhone: (value: string) => void
+}
+
+const Title = ({ title, setTitle, name, setName, email, setEmail, phone, setPhone }: IProps) => {
   return (
     <TitleWrapper>
-      <h1>민경미</h1>
+      <h1>{title}</h1>
       <div>
-        <input type='text' placeholder='민경미' />
-        <input type='text' placeholder='kmmin727@gmail.com' />
-        <input type='text' placeholder='+821071560673' />
+        <input
+          type='text'
+          defaultValue={name}
+          onChange={(e) => {
+            setName(e.currentTarget.value)
+          }}
+        />
+        <input
+          type='text'
+          defaultValue={email}
+          onChange={(e) => {
+            setEmail(e.currentTarget.value)
+          }}
+        />
+        <input
+          type='text'
+          defaultValue={phone}
+          onChange={(e) => {
+            setPhone(e.currentTarget.value)
+          }}
+        />
       </div>
     </TitleWrapper>
   )

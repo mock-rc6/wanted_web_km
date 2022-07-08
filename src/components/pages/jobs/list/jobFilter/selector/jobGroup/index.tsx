@@ -39,7 +39,7 @@ const JobGroupSelector = ({ selectedJobGroup, setSelectedJobGroup, toggle }: IPr
 
   const handleClickJobGroup = (groupName: string) => {
     if (searchParams.has('job_group')) searchParams.delete('job_group')
-    searchParams.append('job_group', 'development')
+    searchParams.append('job_group', '개발')
     setSearchParams(searchParams)
     setSelectedJobGroup(groupName)
     toggle({ job_group: false })

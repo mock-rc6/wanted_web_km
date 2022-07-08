@@ -1,22 +1,14 @@
-import store from 'storejs'
 import styled from 'styled-components'
 import { AlarmIcon } from 'assets'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useState } from 'react'
+
 import MyMenu from '../../lnb'
+import { useRecoilState } from 'recoil'
+import { userProfileState } from 'recoil/atoms'
 
 const Profile = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const accessToken = store.get('accessToken')
-  useEffect(() => {
-    axios
-      .get('https://dev.odoong.shop/users/mypages', {
-        headers: {
-          'X-ACCESS-TOKEN': accessToken,
-        },
-      })
-      .then((res) => console.log(res))
-  }, [accessToken])
+  const [img, setImg] = useRecoilState(userProfileState)
 
   const handleClickProfile = () => {
     setIsOpen((prev) => !prev)
@@ -26,7 +18,13 @@ const Profile = () => {
       <ProfileWrapper>
         <AlarmIcon />
         <button type='button' className='avatarBorder' onClick={handleClickProfile}>
-          <div className='avatar' />
+          {img.length > 0 ? (
+            <div className='avatar'>
+              <img src={img} />
+            </div>
+          ) : (
+            <div className='avatar' />
+          )}
         </button>
       </ProfileWrapper>
       {isOpen && <MyMenu />}
@@ -63,6 +61,13 @@ const ProfileWrapper = styled.div`
       background-size: cover;
       background-repeat: no-repeat;
       background-image: url(https://static.wanted.co.kr/images/profile_default.png);
+
+      img {
+        width: 28px;
+        height: 28px;
+        background-color: #fff;
+        object-fit: cover;
+      }
     }
   }
 `

@@ -23,6 +23,13 @@ const EventCardWrapper = styled.div`
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    img {
+      text-align: center;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   span {

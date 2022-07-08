@@ -1,7 +1,24 @@
+import axios from 'axios'
 import styled from 'styled-components'
+import store from 'storejs'
 import Aside from '../profileBox'
+import { useEffect, useState } from 'react'
 
 const MyProfile = () => {
+  const accessToken = store.get('accessToken')
+  const [data, setData] = useState<any>()
+  useEffect(() => {
+    axios
+      .get('https://dev.odoong.shop/mypages/profiles', {
+        headers: {
+          'X-ACCESS-TOKEN': accessToken,
+        },
+      })
+      .then((res) => setData(res.data.result))
+  }, [accessToken])
+
+  console.log(data)
+
   return (
     <MyPageWrapper>
       <div className='myPage'>
@@ -21,15 +38,15 @@ const MyProfile = () => {
                 </button>
                 <span>학교</span>
                 <div className='row'>
-                  <dt>경희대학교</dt>
+                  <dt>라이징캠프</dt>
                   <span>|</span>
-                  <dd>국어국문학 학사</dd>
+                  <dd>web 5기 a반</dd>
                 </div>
                 <span>직장</span>
                 <div className='row'>
-                  <dt>중부지방국세청</dt>
+                  <dt>좋은직장</dt>
                   <span>|</span>
-                  <dd>소속 일선 세무서 근무</dd>
+                  <dd>좋은 부서</dd>
                 </div>
                 <div className='introduce'>
                   안녕하세요. 주니어 프론트엔드 개발자 민경미입니다.
@@ -41,20 +58,30 @@ const MyProfile = () => {
               <h3>전문분야 설정</h3>
               <article className='selectedResume'>
                 <div className='label'>직군</div>
-                <div className='contents'>개발</div>
+                <div className='contents'>{data?.job_group ? data.job_group : '개발'}</div>
                 <div className='label'>직무</div>
-                <div className='contents'>프론트엔드 개발자</div>
+                <div className='contents'>
+                  {data?.positions.map((el: string) => (
+                    <div key={el}>{el.length > 0 ? el : '프론트엔드'}</div>
+                  ))}
+                </div>
                 <div className='label'>경력</div>
-                <div className='contents'>신입</div>
+                <div className='contents'>{data?.career === 0 ? '신입' : data?.career}</div>
                 <hr />
                 <div className='jobSearchingOption'>
                   <h6>구직 여부 설정</h6>
                   <div className='jobSearchingBody'>
                     <div className='selectorWrapper'>
                       <select>
-                        <option value='NOW'>현재 구직 중</option>
-                        <option value='INTEREST'>관심 있음</option>
-                        <option value='NO'>전혀 관심 없음</option>
+                        <option value='LOOKINGFORJOB' selected={data?.looking_for_job === 'LOOKINGFORJOB'}>
+                          현재 구직 중
+                        </option>
+                        <option value='INTERESTED' selected={data?.looking_for_job === 'INTERESTED'}>
+                          관심 있음
+                        </option>
+                        <option value='NOINTEREST' selected={data?.looking_for_job === 'NOINTEREST'}>
+                          전혀 관심 없음
+                        </option>
                       </select>
                     </div>
                     <span className='resumeNow'> 이력서 공개중</span>

@@ -21,7 +21,7 @@ const JobList = ({ searchParams }: IProps) => {
 
   useEffect(() => {
     axios
-      .get(`https://dev.odoong.shop/recruits?${searchParams?.toString()}`, {
+      .get(`https://dev.odoong.shop/recruits?years=0&years=10&${searchParams?.toString()}`, {
         headers: {
           'X-ACCESS-TOKEN': accessToken,
         },
@@ -32,6 +32,8 @@ const JobList = ({ searchParams }: IProps) => {
         setBookMarkData(data.bookmarks)
       })
   }, [searchParams])
+
+  console.log(jobData)
 
   const bookMarkList: number[] = []
 

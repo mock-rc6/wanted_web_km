@@ -1,9 +1,13 @@
 import NewIcon from 'assets/img/new.png'
 import styled from 'styled-components'
 
-const NewBtn = () => {
+interface IProps {
+  onClick: () => void
+}
+
+const NewBtn = ({ onClick }: IProps) => {
   return (
-    <NewBtnWrapper>
+    <NewBtnWrapper onClick={onClick}>
       <span className='new'>
         <img src={NewIcon} alt='new' />
       </span>
@@ -14,7 +18,7 @@ const NewBtn = () => {
 
 export default NewBtn
 
-const NewBtnWrapper = styled.div`
+const NewBtnWrapper = styled.button`
   .new {
     background-color: #36f;
     cursor: pointer;

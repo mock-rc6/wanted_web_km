@@ -1,11 +1,15 @@
 import { FilterIcon, LinedArrow, Logo, MatchUpIcon, ProfileIcon, QuestionIcon, SearchBigIcon, WhiteArrow } from 'assets'
 import Footer from 'components/common/layout/footer'
+import { Fragment } from 'react'
 import ArticleCard from './articleCard'
+import { DummyInsight } from './insightCard/dummydata'
 import Carousel from './carousel'
 import EventCard from './eventCard'
 import InsightCard from './insightCard'
 import { MainWrapper } from './main.styles'
 import VODCard from './vodCard'
+import { ArticleDummyData } from './articleCard/dummydata'
+import { VODDummyData } from './vodCard/dummydata'
 
 const Main = () => {
   return (
@@ -28,14 +32,11 @@ const Main = () => {
             <li className='chip'>취업/이직</li>
           </ul>
           <ul className='insightCardList'>
-            <InsightCard />
-            <InsightCard />
-            <InsightCard />
-            <InsightCard />
-            <InsightCard />
-            <InsightCard />
-            <InsightCard />
-            <InsightCard />
+            {DummyInsight.map((el) => (
+              <Fragment key={el.url}>
+                <InsightCard el={el} />
+              </Fragment>
+            ))}
           </ul>
           <button type='button' className='moreBtn'>
             더 많은 콘텐츠 보기
@@ -71,10 +72,11 @@ const Main = () => {
             아티클 전체보기 <LinedArrow />
           </span>
           <ul className='articlesUl'>
-            <ArticleCard />
-            <ArticleCard />
-            <ArticleCard />
-            <ArticleCard />
+            {ArticleDummyData.map((el) => (
+              <Fragment key={el.url}>
+                <ArticleCard el={el} />
+              </Fragment>
+            ))}
           </ul>
         </section>
         <hr className='divider' />
@@ -85,10 +87,11 @@ const Main = () => {
             <LinedArrow />
           </span>
           <ul className='articlesUl'>
-            <VODCard />
-            <VODCard />
-            <VODCard />
-            <VODCard />
+            {VODDummyData.map((el) => (
+              <Fragment key={el.url}>
+                <VODCard el={el} />
+              </Fragment>
+            ))}
           </ul>
         </section>
         <div className='buttonWrapper'>

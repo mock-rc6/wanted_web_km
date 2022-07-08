@@ -1,18 +1,38 @@
+import axios from 'axios'
 import styled from 'styled-components'
+import store from 'storejs'
 
-const CompanyCard = () => {
+interface IProps {
+  companyName: string
+  id: number
+  logo: string | null
+}
+
+const CompanyCard = ({ companyName, id, logo }: IProps) => {
+  const accessToken = store.get('accessToken')
+  const handleClickFollow = () => {
+    axios
+      .post(`https://dev.odoong.shop/companies/${id}/follows`, null, {
+        headers: {
+          'X-ACCESS-TOKEN': accessToken,
+        },
+      })
+      .then((res) => alert(res.data.message))
+  }
+
   return (
     <CardWrapper>
       <div className='companyCard'>
         <div className='cardLeft'>
-          <div className='logo' />
+          {logo && <div className='logo' />}
+
           <div className='companyInfo'>
-            <h5 className='companyName'>자비스앤빌런즈(삼쩜삼)</h5>
+            <h5 className='companyName'>{companyName}</h5>
             <h6>IT,컨텐츠</h6>
           </div>
         </div>
         <div className='cardRight'>
-          <button type='button' className='followBtn'>
+          <button type='button' className='followBtn' onClick={handleClickFollow}>
             팔로우
           </button>
         </div>

@@ -1,17 +1,29 @@
 import { DotsIcon } from 'assets'
+import { useState } from 'react'
 import styled from 'styled-components'
+import Menu from './menu'
 
-const ResumeCardInfo = () => {
+interface IProps {
+  isFinished: boolean
+  id: number
+}
+
+const ResumeCardInfo = ({ isFinished, id }: IProps) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const handleClickMenu = () => {
+    setIsOpen((prev) => !prev)
+  }
   return (
     <ResumeCardInfoWrapper>
       <div className='right'>
         <div className='language'>한</div>
-        <span className='complete'>작성 완료</span>
+        <span className={isFinished ? 'complete' : 'notfinished'}> {isFinished ? '작성 완료' : '작성 중'}</span>
       </div>
       <div className='moreBtn'>
-        <button type='button'>
+        <button type='button' onClick={handleClickMenu}>
           <DotsIcon />
         </button>
+        {isOpen && <Menu id={id} handleClickMenu={handleClickMenu} />}
       </div>
     </ResumeCardInfoWrapper>
   )
@@ -51,10 +63,17 @@ const ResumeCardInfoWrapper = styled.div`
       letter-spacing: normal;
       text-align: left;
     }
+
+    .notfinished {
+      font-size: 16px;
+      font-weight: 600;
+      color: #999;
+    }
   }
 
   .moreBtn {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     button {

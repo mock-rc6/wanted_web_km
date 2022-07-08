@@ -1,16 +1,32 @@
 import JobCard from 'components/pages/jobs/list/jobList/jobCard'
 import styled from 'styled-components'
+import store from 'storejs'
+import { Fragment, useEffect, useState } from 'react'
+import axios from 'axios'
 
 const MyBookmark = () => {
+  const accessToken = store.get('accessToken')
+  const [data, setData] = useState<any>()
+  useEffect(() => {
+    axios
+      .get('https://dev.odoong.shop/mypages/bookmarks', {
+        headers: {
+          'X-ACCESS-TOKEN': accessToken,
+        },
+      })
+      .then((res) => setData(res.data.result))
+  }, [accessToken])
+
   return (
     <MyBookmarkWrapper>
       <div className='myPage'>
         <h2>북마크</h2>
         <div className='myWantedContents'>
-          <JobCard />
-          <JobCard />
-          <JobCard />
-          <JobCard />
+          {data?.map((el: any) => (
+            <Fragment key={el.id}>
+              <JobCard job={el} />
+            </Fragment>
+          ))}
         </div>
       </div>
     </MyBookmarkWrapper>

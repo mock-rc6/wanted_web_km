@@ -2,7 +2,22 @@ import AddButton from '../../addButton'
 import Guidance from '../guidance'
 import { EducationBox, EducationWrapper } from './education.styles'
 
-const Education = () => {
+interface IProps {
+  educations: IEducation[]
+  setEducations: (value: IEducation[]) => void
+}
+
+interface IEducation {
+  id: number
+  start_date: string
+  end_date: string
+  is_in_service: boolean
+  school_name: string
+  major_degree: string
+  detail: string
+}
+
+const Education = ({ educations, setEducations }: IProps) => {
   return (
     <EducationWrapper>
       <Guidance title='학력' contents='• 최신순으로 작성해주세요.' />

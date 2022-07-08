@@ -1,15 +1,69 @@
-import { WhiteArrow } from 'assets'
+import axios from 'axios'
+import { useEffect, useRef, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { userProfileState } from 'recoil/atoms'
+import store from 'storejs'
 import styled from 'styled-components'
 
+interface IData {
+  name: string
+  email: string
+  phone_number: string
+}
+
 const Aside = () => {
+  const [data, setData] = useState<IData>()
+  const [img, setImg] = useRecoilState(userProfileState)
+
+  const accessToken = store.get('accessToken')
+  const ref = useRef<any>()
+  useEffect(() => {
+    axios
+      .get('https://dev.odoong.shop/mypages', {
+        headers: {
+          'X-ACCESS-TOKEN': accessToken,
+        },
+      })
+      .then((res) => setData(res.data.result))
+  }, [accessToken])
+
+  const formData = new FormData()
+  const onClickButton = () => {
+    if (ref.current != null) ref.current.click()
+  }
+  const onChangeFile = (event: any) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+    formData.append('images', file)
+    axios
+      .post(`https://dev.odoong.shop/users/resources/images`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'X-ACCESS-TOKEN': accessToken,
+        },
+      })
+      .then((res) => setImg(`https://dev.odoong.shop/resources${res.data.result.photo_url}`))
+  }
+
   return (
     <AsideWrapper>
       <Profile>
-        <div className='profileImg' />
+        <form encType='multipart/form-data' onSubmit={onChangeFile}>
+          <button type='button' onClick={onClickButton}>
+            {img.length > 0 ? (
+              <div className='profileImg'>
+                <img src={img} />
+              </div>
+            ) : (
+              <div className='profileImg' />
+            )}
+          </button>
+          <input type='file' onChange={onChangeFile} ref={ref} style={{ display: 'none' }} />
+        </form>
         <dl>
-          <dt>민경미</dt>
-          <dd>kmmmin727@gmail.com</dd>
-          <dd>010-7156-0673</dd>
+          <dt>{data?.name}</dt>
+          <dd>{data?.email}</dd>
+          <dd>{data?.phone_number}</dd>
         </dl>
       </Profile>
       <div className='info'>기본정보 수정</div>
@@ -81,6 +135,13 @@ export const Profile = styled.div`
     background-position: 50%;
     background-repeat: no-repeat;
     background-image: url(https://static.wanted.co.kr/images/profile_default.png);
+    img {
+      width: 77px;
+      height: 77px;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: #fff;
+    }
   }
 
   dl {

@@ -1,33 +1,27 @@
 import styled from 'styled-components'
 
 interface IProps {
-  link?: string
-  img1?: string
-  img2?: string
-  title?: string
-  contents?: string
-  writer?: string
+  el: {
+    link?: string
+    url?: string
+    img2?: string
+    title?: string
+    contents?: string
+    writer?: string
+  }
 }
 
-const InsightCard = ({ link, img1, img2, title, contents, writer }: IProps) => {
+const InsightCard = ({ el }: IProps) => {
   return (
     <InsightCardWrapper>
       <a href='https://brunch.co.kr/@hyungsukkim/161'>
         <div className='cardTop'>
           <div className='cardImg'>
-            <img
-              src='https://image.wanted.co.kr/optimize?src=https%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fstatic%2Ficon%2Fios%2Ficon152.png&amp;w=70&amp;q=75'
-              alt='나는 어떠한 회사에 다니고 싶은가.'
-            />
+            <img src={el.url} alt={el.title} />
           </div>
         </div>
-        <p className='cardTitle'>나는 어떠한 회사에 다니고 싶은가.</p>
-        <p className='cardContents'>
-          완벽한 사람이 없는 것처럼 완벽한 회사도 없다. 그러나 그렇다고 체념할 필요는 없다. 자신에게 맞는 회사를 찾고,
-          필요하다면 내가 다니고 있는 회사를 그렇게 만들려고 노력하면 된다. 나는 언제 가장 잘 작동하는가. 내게 가장
-          중요한 가치는 무엇인가. 어떤 회사를 다니고 싶은가에 대해서 자신만의 기준을 생각하는 것은 스스로에게 큰 도움이
-          된다. -
-        </p>
+        <p className='cardTitle'>{el.title}</p>
+        <p className='cardContents'>{el.contents}</p>
         <div className='cardInfo'>
           <img
             src='https://image.wanted.co.kr/optimize?src=https%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fstatic%2Ficon%2Fios%2Ficon120.png&amp;w=30&amp;q=75'
@@ -66,11 +60,10 @@ const InsightCardWrapper = styled.li`
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
 
       img {
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
+        width: 100%;
       }
     }
   }
