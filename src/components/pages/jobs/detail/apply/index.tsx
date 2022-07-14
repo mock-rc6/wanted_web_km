@@ -33,7 +33,8 @@ export const Apply = ({ scrollRef, data }: IProps) => {
         }
       )
       .then((res) => {
-        if (res.data.result.status === 0) handleModal()
+        console.log(res)
+        // if (res.data.result.status === 0) handleModal()
       })
   }
 

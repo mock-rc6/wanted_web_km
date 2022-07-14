@@ -1,15 +1,18 @@
-import { FilterIcon, LinedArrow, Logo, MatchUpIcon, ProfileIcon, QuestionIcon, SearchBigIcon, WhiteArrow } from 'assets'
-import Footer from 'components/common/layout/footer'
 import { Fragment } from 'react'
-import ArticleCard from './articleCard'
-import { DummyInsight } from './insightCard/dummydata'
+
 import Carousel from './carousel'
 import EventCard from './eventCard'
 import InsightCard from './insightCard'
-import { MainWrapper } from './main.styles'
 import VODCard from './vodCard'
+import ArticleCard from './articleCard'
+import Footer from 'components/common/layout/footer'
+
+import { DummyInsight } from './insightCard/dummydata'
+import { MainWrapper } from './main.styles'
 import { ArticleDummyData } from './articleCard/dummydata'
 import { VODDummyData } from './vodCard/dummydata'
+
+import { FilterIcon, LinedArrow, Logo, MatchUpIcon, ProfileIcon, QuestionIcon, SearchBigIcon, WhiteArrow } from 'assets'
 
 const Main = () => {
   return (

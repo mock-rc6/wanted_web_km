@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import store from 'storejs'
 
 const MyMenu = () => {
+  const logout = () => {
+    store.remove('accessToken')
+    location.reload()
+  }
+
   return (
     <MyMenuWrapper>
       <li>MY 원티드</li>
@@ -21,7 +27,11 @@ const MyMenu = () => {
       <li>추천</li>
       <li>포인트</li>
       <hr />
-      <li>로그아웃</li>
+      <li>
+        <button type='button' onClick={logout}>
+          로그아웃
+        </button>
+      </li>
     </MyMenuWrapper>
   )
 }

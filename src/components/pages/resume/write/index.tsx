@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
 import axios from 'axios'
 import store from 'storejs'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ResumeWriteWrapper } from './write.styles'
 import Carrer from './career'
 import Education from './education'
@@ -12,7 +13,6 @@ import ETC from './etc'
 import ResumeHeader from './writeHeader'
 import Title from './title'
 import ResumeFooter from './writeFooter'
-import { useLocation, useNavigate } from 'react-router-dom'
 
 interface ICareer {
   id: number
@@ -109,7 +109,6 @@ const ResumeWrite = () => {
       )
       .then((res) => {
         alert(res.data.message)
-        navigate('/resume/list')
       })
   }
 

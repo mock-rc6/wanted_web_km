@@ -62,7 +62,7 @@ const ResumeList = () => {
           <li className='default'>
             <UploadBtn />
           </li>
-          {resumeList.map((resume) => (
+          {resumeList?.map((resume) => (
             <li key={resume.id}>
               <ResumeCard resume={resume} />
             </li>

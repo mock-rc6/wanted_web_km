@@ -14,7 +14,14 @@ interface IProps {
 const Title = ({ title, setTitle, name, setName, email, setEmail, phone, setPhone }: IProps) => {
   return (
     <TitleWrapper>
-      <h1>{title}</h1>
+      <input
+        className='resumeTitle'
+        type='text'
+        defaultValue={title}
+        onChange={(e) => {
+          setTitle(e.currentTarget.value)
+        }}
+      />
       <div>
         <input
           type='text'
@@ -46,12 +53,14 @@ export default Title
 
 const TitleWrapper = styled.div`
   margin-bottom: 60px;
-  h1 {
+  .resumeTitle {
     color: #3b3d40;
+    width: 100%;
     font-size: 36px;
     line-height: 36px;
     font-weight: 500;
     margin: 130px 0 50px;
+    border: none;
   }
 
   div {
