@@ -57,8 +57,7 @@ const SignUp = ({ email, handleModal }: IProps) => {
   }
 
   const handleClickToken = () => {
-    setIsTokenSend(true)
-    axios.post('https://dev.odoong.shop/sms', { phone_number: phone })
+    axios.post('https://dev.odoong.shop/sms', { phone_number: phone }).then(() => setIsTokenSend(true))
   }
 
   const handleClickTokenValid = () => {
@@ -80,20 +79,25 @@ const SignUp = ({ email, handleModal }: IProps) => {
     //   return
     // }
     // if (!isCodeValid) return
-    axios.post(
-      'https://dev.odoong.shop/users',
-      {
-        user_name: name,
-        email,
-        password,
-        phone_number: phone,
-      },
-      {
-        headers: {
-          'X-ACCESS-TOKEN': accessToken,
+    axios
+      .post(
+        'https://dev.odoong.shop/users',
+        {
+          user_name: name,
+          email,
+          password,
+          phone_number: phone,
         },
-      }
-    )
+        {
+          headers: {
+            'X-ACCESS-TOKEN': accessToken,
+          },
+        }
+      )
+      .then(() => {
+        alert('회원가입이 완료되었습니다.')
+        handleModal()
+      })
   }
 
   return (
@@ -155,7 +159,7 @@ const SignUp = ({ email, handleModal }: IProps) => {
                 autoComplete='off'
               />
               <label className='all'>
-                <input type='checkbox' className='checkbox' /> 전체 동의
+                <input type='checkbox' className='checkbox' required /> 이용 약관 동의
               </label>
               <div className='signUpButton'>
                 <button type='button' onClick={handleClickSubmit}>
